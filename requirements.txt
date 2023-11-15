@@ -1,3 +1,8 @@
 datasets
-transformers
 sentencepiece
+transformers @ git+https://github.com/huggingface/transformers.git@main
+peft @ git+https://github.com/huggingface/peft.git@4c611f4
+torch
+wandb
+scipy
+
