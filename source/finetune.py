@@ -65,18 +65,24 @@ def tokenize(prompt):
     return result
 
 def generate_and_tokenize_prompt(data_point):
-    full_prompt =f"""You are a powerful text-to-SQL model. Your job is to answer questions about a database. You are given a question and context regarding one or more tables.
+    full_prompt =f"""You are a powerful cloudforet API model. Your job is to understand the struct of Cloudforet API. Your are given a Service, Resource, Verb, Request and Response. Service is a standalone micro service consist of Resources. By execuing specific verbs with request on the Resource, the output is as the format of the Response.
 
-                You must output the SQL query that answers the question.
+                You must learn the inter-relation of these Service, Resource, Verb, Request and Response.
 
-                ### Input:
-                {data_point["question"]}
+                ### Service:
+                {data_point["service"]}
 
-                ### Context:
-                {data_point["context"]}
+                ### Resource:
+                {data_point["resource"]}
 
-                ### Response:
-                {data_point["answer"]}
+                ### Verb:
+                {data_point["verb"]}
+
+                ### Request:
+                {data_point["request"]}
+
+                ## Response:
+                {data_point["response"]}
                 """
     return tokenize(full_prompt)
 
@@ -120,8 +126,8 @@ output_dir = "sql-code-llama"
 training_args = TrainingArguments(
         per_device_train_batch_size=per_device_train_batch_size,
         gradient_accumulation_steps=gradient_accumulation_steps,
-        warmup_steps=100,
-        max_steps=400,
+        warmup_steps=10,
+        max_steps=100,
         learning_rate=3e-4,
         fp16=True,
         logging_steps=10,
