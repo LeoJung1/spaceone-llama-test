@@ -1,0 +1,3628 @@
+[
+    {
+        "service": "statistics",
+        "resource": "History",
+        "verb": "create",
+        "request": "schedule_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "statistics",
+        "resource": "History",
+        "verb": "list",
+        "request": "query(Query),topic(string),domain_id(string)",
+        "response": "results(HistoryValueInfo),total_count(int32)"
+    },
+    {
+        "service": "statistics",
+        "resource": "History",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),topic(string),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "statistics",
+        "resource": "Resource",
+        "verb": "stat",
+        "request": "aggregate(StatAggregate),page(StatPage),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "statistics",
+        "resource": "Schedule",
+        "verb": "add",
+        "request": "topic(string),options(Struct),schedule(Scheduled),tags(Struct),user_id(string),domain_id(string)",
+        "response": "schedule_id(string),topic(string),state(State),options(Struct),schedule(Scheduled),tags(Struct),domain_id(string),created_at(string),last_scheduled_at(string)"
+    },
+    {
+        "service": "statistics",
+        "resource": "Schedule",
+        "verb": "update",
+        "request": "schedule_id(string),schedule(Scheduled),tags(Struct),storage_id(string),domain_id(string)",
+        "response": "schedule_id(string),topic(string),state(State),options(Struct),schedule(Scheduled),tags(Struct),domain_id(string),created_at(string),last_scheduled_at(string)"
+    },
+    {
+        "service": "statistics",
+        "resource": "Schedule",
+        "verb": "enable",
+        "request": "schedule_id(string),domain_id(string)",
+        "response": "schedule_id(string),topic(string),state(State),options(Struct),schedule(Scheduled),tags(Struct),domain_id(string),created_at(string),last_scheduled_at(string)"
+    },
+    {
+        "service": "statistics",
+        "resource": "Schedule",
+        "verb": "disable",
+        "request": "schedule_id(string),domain_id(string)",
+        "response": "schedule_id(string),topic(string),state(State),options(Struct),schedule(Scheduled),tags(Struct),domain_id(string),created_at(string),last_scheduled_at(string)"
+    },
+    {
+        "service": "statistics",
+        "resource": "Schedule",
+        "verb": "delete",
+        "request": "schedule_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "statistics",
+        "resource": "Schedule",
+        "verb": "get",
+        "request": "schedule_id(string),domain_id(string),only(string)",
+        "response": "schedule_id(string),topic(string),state(State),options(Struct),schedule(Scheduled),tags(Struct),domain_id(string),created_at(string),last_scheduled_at(string)"
+    },
+    {
+        "service": "statistics",
+        "resource": "Schedule",
+        "verb": "list",
+        "request": "query(Query),schedule_id(string),topic(string),state(string),resource_type(string),domain_id(string)",
+        "response": "results(ScheduleInfo),total_count(int32)"
+    },
+    {
+        "service": "statistics",
+        "resource": "Schedule",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "statistics",
+        "resource": "Storage",
+        "verb": "register",
+        "request": "name(string),plugin_info(PluginRequest),tags(Struct),user_id(string),domain_id(string)",
+        "response": "storage_id(string),name(string),state(State),options(Struct),capability(Struct),plugin_info(PluginInfo),tags(Struct),user_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "statistics",
+        "resource": "Storage",
+        "verb": "update",
+        "request": "storage_id(string),name(string),tags(Struct),domain_id(string)",
+        "response": "storage_id(string),name(string),state(State),options(Struct),capability(Struct),plugin_info(PluginInfo),tags(Struct),user_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "statistics",
+        "resource": "Storage",
+        "verb": "update_plugin",
+        "request": "storage_id(string),version(string),options(Struct),secret_data(Struct),domain_id(string)",
+        "response": "storage_id(string),name(string),state(State),options(Struct),capability(Struct),plugin_info(PluginInfo),tags(Struct),user_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "statistics",
+        "resource": "Storage",
+        "verb": "verify_plugin",
+        "request": "storage_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "statistics",
+        "resource": "Storage",
+        "verb": "enable",
+        "request": "storage_id(string),domain_id(string)",
+        "response": "storage_id(string),name(string),state(State),options(Struct),capability(Struct),plugin_info(PluginInfo),tags(Struct),user_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "statistics",
+        "resource": "Storage",
+        "verb": "disable",
+        "request": "storage_id(string),domain_id(string)",
+        "response": "storage_id(string),name(string),state(State),options(Struct),capability(Struct),plugin_info(PluginInfo),tags(Struct),user_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "statistics",
+        "resource": "Storage",
+        "verb": "deregister",
+        "request": "storage_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "statistics",
+        "resource": "Storage",
+        "verb": "get",
+        "request": "storage_id(string),domain_id(string),only(string)",
+        "response": "storage_id(string),name(string),state(State),options(Struct),capability(Struct),plugin_info(PluginInfo),tags(Struct),user_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "statistics",
+        "resource": "Storage",
+        "verb": "list",
+        "request": "query(Query),storage_id(string),name(string),state(string),user_id(string),domain_id(string)",
+        "response": "results(StorageInfo),total_count(int32)"
+    },
+    {
+        "service": "statistics",
+        "resource": "Storage",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "repository",
+        "resource": "Policy",
+        "verb": "create",
+        "request": "name(string),permissions(string),policy_id(string),labels(ListValue),tags(Struct),project_id(string),domain_id(string)",
+        "response": "policy_id(string),name(string),state(State),permissions(string),labels(ListValue),tags(Struct),repository_info(RepositoryInfo),project_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "repository",
+        "resource": "Policy",
+        "verb": "update",
+        "request": "policy_id(string),name(string),permissions(string),labels(ListValue),tags(Struct),domain_id(string)",
+        "response": "policy_id(string),name(string),state(State),permissions(string),labels(ListValue),tags(Struct),repository_info(RepositoryInfo),project_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "repository",
+        "resource": "Policy",
+        "verb": "delete",
+        "request": "policy_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "repository",
+        "resource": "Policy",
+        "verb": "get",
+        "request": "policy_id(string),domain_id(string),repository_id(string),only(string)",
+        "response": "policy_id(string),name(string),state(State),permissions(string),labels(ListValue),tags(Struct),repository_info(RepositoryInfo),project_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "repository",
+        "resource": "Policy",
+        "verb": "list",
+        "request": "query(Query),policy_id(string),name(string),project_id(string),repository_id(string),domain_id(string),state(State)",
+        "response": "results(PolicyInfo),total_count(int32)"
+    },
+    {
+        "service": "repository",
+        "resource": "Policy",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),repository_id(string),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "repository",
+        "resource": "Repository",
+        "verb": "register",
+        "request": "name(string),repository_type(string),endpoint(string),domain_id(string)",
+        "response": "repository_id(string),name(string),repository_type(string),endpoint(string),created_at(string)"
+    },
+    {
+        "service": "repository",
+        "resource": "Repository",
+        "verb": "update",
+        "request": "repository_id(string),name(string),domain_id(string)",
+        "response": "repository_id(string),name(string),repository_type(string),endpoint(string),created_at(string)"
+    },
+    {
+        "service": "repository",
+        "resource": "Repository",
+        "verb": "deregister",
+        "request": "repository_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "repository",
+        "resource": "Repository",
+        "verb": "get",
+        "request": "repository_id(string),only(string),domain_id(string)",
+        "response": "repository_id(string),name(string),repository_type(string),endpoint(string),created_at(string)"
+    },
+    {
+        "service": "repository",
+        "resource": "Repository",
+        "verb": "list",
+        "request": "query(Query),repository_id(string),name(string),repository_type(string),domain_id(string)",
+        "response": "results(RepositoryInfo),total_count(int32)"
+    },
+    {
+        "service": "repository",
+        "resource": "Repository",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "repository",
+        "resource": "Plugin",
+        "verb": "register",
+        "request": "name(string),service_type(string),image(string),provider(string),registry_type(PublicRegistryType),registry_config(Struct),capability(Struct),template(Struct),labels(ListValue),tags(Struct),project_id(string),domain_id(string)",
+        "response": "plugin_id(string),name(string),image(string),registry_url(string),state(State),service_type(string),provider(string),registry_type(PublicRegistryType),registry_config(Struct),capability(Struct),template(Struct),labels(ListValue),tags(Struct),repository_info(RepositoryInfo),project_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "repository",
+        "resource": "Plugin",
+        "verb": "update",
+        "request": "plugin_id(string),name(string),capability(Struct),template(Struct),labels(ListValue),tags(Struct),domain_id(string)",
+        "response": "plugin_id(string),name(string),image(string),registry_url(string),state(State),service_type(string),provider(string),registry_type(PublicRegistryType),registry_config(Struct),capability(Struct),template(Struct),labels(ListValue),tags(Struct),repository_info(RepositoryInfo),project_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "repository",
+        "resource": "Plugin",
+        "verb": "deregister",
+        "request": "plugin_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "repository",
+        "resource": "Plugin",
+        "verb": "enable",
+        "request": "plugin_id(string),domain_id(string)",
+        "response": "plugin_id(string),name(string),image(string),registry_url(string),state(State),service_type(string),provider(string),registry_type(PublicRegistryType),registry_config(Struct),capability(Struct),template(Struct),labels(ListValue),tags(Struct),repository_info(RepositoryInfo),project_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "repository",
+        "resource": "Plugin",
+        "verb": "disable",
+        "request": "plugin_id(string),domain_id(string)",
+        "response": "plugin_id(string),name(string),image(string),registry_url(string),state(State),service_type(string),provider(string),registry_type(PublicRegistryType),registry_config(Struct),capability(Struct),template(Struct),labels(ListValue),tags(Struct),repository_info(RepositoryInfo),project_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "repository",
+        "resource": "Plugin",
+        "verb": "get_versions",
+        "request": "plugin_id(string),domain_id(string),repository_id(string)",
+        "response": "version(string),total_count(int32),results(string)"
+    },
+    {
+        "service": "repository",
+        "resource": "Plugin",
+        "verb": "get",
+        "request": "plugin_id(string),domain_id(string),repository_id(string),only(string)",
+        "response": "plugin_id(string),name(string),image(string),registry_url(string),state(State),service_type(string),provider(string),registry_type(PublicRegistryType),registry_config(Struct),capability(Struct),template(Struct),labels(ListValue),tags(Struct),repository_info(RepositoryInfo),project_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "repository",
+        "resource": "Plugin",
+        "verb": "list",
+        "request": "query(Query),plugin_id(string),name(string),state(State),service_type(string),provider(string),repository_id(string),domain_id(string),registry_type(PublicRegistryType)",
+        "response": "results(PluginInfo),total_count(int32)"
+    },
+    {
+        "service": "repository",
+        "resource": "Plugin",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),repository_id(string),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "repository",
+        "resource": "Schema",
+        "verb": "create",
+        "request": "name(string),service_type(string),schema_id(string),schema(Struct),labels(ListValue),tags(Struct),project_id(string),domain_id(string)",
+        "response": "name(string),service_type(string),schema_id(string),schema(Struct),labels(ListValue),tags(Struct),repository_info(RepositoryInfo),project_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "repository",
+        "resource": "Schema",
+        "verb": "update",
+        "request": "name(string),schema(Struct),labels(ListValue),tags(Struct),domain_id(string)",
+        "response": "name(string),service_type(string),schema_id(string),schema(Struct),labels(ListValue),tags(Struct),repository_info(RepositoryInfo),project_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "repository",
+        "resource": "Schema",
+        "verb": "delete",
+        "request": "name(string),domain_id(string),schema_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "repository",
+        "resource": "Schema",
+        "verb": "get",
+        "request": "name(string),domain_id(string),repository_id(string),only(string),schema_id(string)",
+        "response": "name(string),service_type(string),schema_id(string),schema(Struct),labels(ListValue),tags(Struct),repository_info(RepositoryInfo),project_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "repository",
+        "resource": "Schema",
+        "verb": "list",
+        "request": "query(Query),name(string),service_type(string),project_id(string),repository_id(string),domain_id(string),schema_id(string),state(State)",
+        "response": "results(SchemaInfo),total_count(int32)"
+    },
+    {
+        "service": "repository",
+        "resource": "Schema",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),repository_id(string),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "core",
+        "resource": "ServerInfo",
+        "verb": "get_version",
+        "request": "True",
+        "response": "version(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Domain",
+        "verb": "create",
+        "request": "name(string),plugin_info(PluginInfo),config(Struct),tags(Struct)",
+        "response": "domain_id(string),name(string),state(State),plugin_info(PluginInfo),config(Struct),tags(Struct),created_at(string),deleted_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Domain",
+        "verb": "update",
+        "request": "domain_id(string),plugin_info(PluginInfo),config(Struct),tags(Struct)",
+        "response": "domain_id(string),name(string),state(State),plugin_info(PluginInfo),config(Struct),tags(Struct),created_at(string),deleted_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Domain",
+        "verb": "change_auth_plugin",
+        "request": "domain_id(string),plugin_info(PluginInfo),release_auth_plugin(bool)",
+        "response": "domain_id(string),name(string),state(State),plugin_info(PluginInfo),config(Struct),tags(Struct),created_at(string),deleted_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Domain",
+        "verb": "update_plugin",
+        "request": "domain_id(string),version(string),options(Struct),upgrade_mode(UpgradeMode)",
+        "response": "domain_id(string),name(string),state(State),plugin_info(PluginInfo),config(Struct),tags(Struct),created_at(string),deleted_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Domain",
+        "verb": "verify_plugin",
+        "request": "domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "Domain",
+        "verb": "delete",
+        "request": "domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "Domain",
+        "verb": "enable",
+        "request": "domain_id(string)",
+        "response": "domain_id(string),name(string),state(State),plugin_info(PluginInfo),config(Struct),tags(Struct),created_at(string),deleted_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Domain",
+        "verb": "disable",
+        "request": "domain_id(string)",
+        "response": "domain_id(string),name(string),state(State),plugin_info(PluginInfo),config(Struct),tags(Struct),created_at(string),deleted_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Domain",
+        "verb": "get",
+        "request": "domain_id(string),only(string)",
+        "response": "domain_id(string),name(string),state(State),plugin_info(PluginInfo),config(Struct),tags(Struct),created_at(string),deleted_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Domain",
+        "verb": "list",
+        "request": "query(Query),domain_id(string),name(string),state(State)",
+        "response": "results(DomainInfo),total_count(int32)"
+    },
+    {
+        "service": "identity",
+        "resource": "Domain",
+        "verb": "stat",
+        "request": "query(StatisticsQuery)",
+        "response": "Struct"
+    },
+    {
+        "service": "identity",
+        "resource": "Domain",
+        "verb": "get_public_key",
+        "request": "AuthenticationResponse",
+        "response": ""
+    },
+    {
+        "service": "identity",
+        "resource": "DomainOwner",
+        "verb": "create",
+        "request": "owner_id(string),password(string),name(string),email(string),language(string),timezone(string),domain_id(string)",
+        "response": "owner_id(string),name(string),email(string),language(string),timezone(string),last_accessed_at(string),created_at(string),domain_id(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "DomainOwner",
+        "verb": "update",
+        "request": "owner_id(string),password(string),name(string),email(string),language(string),timezone(string),domain_id(string)",
+        "response": "owner_id(string),name(string),email(string),language(string),timezone(string),last_accessed_at(string),created_at(string),domain_id(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "DomainOwner",
+        "verb": "delete",
+        "request": "domain_id(string),owner_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "DomainOwner",
+        "verb": "get",
+        "request": "domain_id(string),owner_id(string),only(string)",
+        "response": "owner_id(string),name(string),email(string),language(string),timezone(string),last_accessed_at(string),created_at(string),domain_id(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Policy",
+        "verb": "create",
+        "request": "name(string),permissions(string),tags(Struct),domain_id(string)",
+        "response": "policy_id(string),name(string),permissions(string),domain_id(string),tags(Struct),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Policy",
+        "verb": "update",
+        "request": "policy_id(string),name(string),permissions(string),tags(Struct),domain_id(string)",
+        "response": "policy_id(string),name(string),permissions(string),domain_id(string),tags(Struct),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Policy",
+        "verb": "delete",
+        "request": "policy_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "Policy",
+        "verb": "get",
+        "request": "policy_id(string),domain_id(string),only(string)",
+        "response": "policy_id(string),name(string),permissions(string),domain_id(string),tags(Struct),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Policy",
+        "verb": "list",
+        "request": "query(Query),policy_id(string),name(string),domain_id(string)",
+        "response": "results(PolicyInfo),total_count(int32)"
+    },
+    {
+        "service": "identity",
+        "resource": "Policy",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "identity",
+        "resource": "Token",
+        "verb": "issue",
+        "request": "user_id(string),credentials(Struct),user_type(string),domain_id(string),timeout(int32),refresh_count(int32),verify_code(string)",
+        "response": "access_token(string),refresh_token(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Token",
+        "verb": "refresh",
+        "request": "True",
+        "response": "access_token(string),refresh_token(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Role",
+        "verb": "create",
+        "request": "name(string),role_type(RoleType),policies(RolePolicy),page_permissions(PagePermission),tags(Struct),domain_id(string)",
+        "response": "role_id(string),name(string),role_type(RoleType),policies(RolePolicy),page_permissions(PagePermission),tags(Struct),domain_id(string),created_at(string),deleted_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Role",
+        "verb": "update",
+        "request": "role_id(string),name(string),policies(RolePolicy),page_permissions(PagePermission),tags(Struct),release_page_permissions(bool),domain_id(string)",
+        "response": "role_id(string),name(string),role_type(RoleType),policies(RolePolicy),page_permissions(PagePermission),tags(Struct),domain_id(string),created_at(string),deleted_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Role",
+        "verb": "delete",
+        "request": "role_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "Role",
+        "verb": "get",
+        "request": "role_id(string),domain_id(string),only(string)",
+        "response": "role_id(string),name(string),role_type(RoleType),policies(RolePolicy),page_permissions(PagePermission),tags(Struct),domain_id(string),created_at(string),deleted_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Role",
+        "verb": "list",
+        "request": "query(Query),role_id(string),name(string),role_type(RoleType),policy_id(string),domain_id(string)",
+        "response": "results(RoleInfo),total_count(int32)"
+    },
+    {
+        "service": "identity",
+        "resource": "Role",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "identity",
+        "resource": "Project",
+        "verb": "create",
+        "request": "name(string),project_group_id(string),tags(Struct),domain_id(string)",
+        "response": "project_id(string),name(string),tags(Struct),project_group_info(ProjectGroupInfo),domain_id(string),created_by(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Project",
+        "verb": "update",
+        "request": "project_id(string),project_group_id(string),name(string),tags(Struct),domain_id(string)",
+        "response": "project_id(string),name(string),tags(Struct),project_group_info(ProjectGroupInfo),domain_id(string),created_by(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Project",
+        "verb": "delete",
+        "request": "project_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "Project",
+        "verb": "get",
+        "request": "project_id(string),domain_id(string),only(string)",
+        "response": "project_id(string),name(string),tags(Struct),project_group_info(ProjectGroupInfo),domain_id(string),created_by(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Project",
+        "verb": "list",
+        "request": "query(Query),project_id(string),name(string),project_group_id(string),user_id(string),domain_id(string)",
+        "response": "results(ProjectInfo),total_count(int32)"
+    },
+    {
+        "service": "identity",
+        "resource": "Project",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "identity",
+        "resource": "Project",
+        "verb": "add_member",
+        "request": "project_id(string),user_id(string),role_id(string),labels(ListValue),tags(Struct),domain_id(string),is_external_user(bool)",
+        "response": "role_binding_id(string),resource_type(string),resource_id(string),role_info(RoleInfo),project_info(ProjectInfo),project_group_info(ProjectGroupInfo),labels(ListValue),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Project",
+        "verb": "modify_member",
+        "request": "project_id(string),user_id(string),labels(ListValue),tags(Struct),domain_id(string)",
+        "response": "role_binding_id(string),resource_type(string),resource_id(string),role_info(RoleInfo),project_info(ProjectInfo),project_group_info(ProjectGroupInfo),labels(ListValue),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Project",
+        "verb": "remove_member",
+        "request": "project_id(string),user_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "Project",
+        "verb": "list_members",
+        "request": "query(Query),project_id(string),user_id(string),role_id(string),include_parent_member(bool),domain_id(string)",
+        "response": "results(ProjectRoleBindingInfo),total_count(int32)"
+    },
+    {
+        "service": "identity",
+        "resource": "ServiceAccount",
+        "verb": "create",
+        "request": "name(string),data(Struct),provider(string),project_id(string),tags(Struct),service_account_type(string),trusted_service_account_id(string),domain_id(string)",
+        "response": "service_account_id(string),name(string),service_account_type(string),data(Struct),provider(string),trusted_service_account_id(string),project_info(ProjectInfo),scope(string),domain_id(string),tags(Struct),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "ServiceAccount",
+        "verb": "update",
+        "request": "service_account_id(string),name(string),data(Struct),project_id(string),tags(Struct),trusted_service_account_id(string),release_trusted_service_account(bool),domain_id(string)",
+        "response": "service_account_id(string),name(string),service_account_type(string),data(Struct),provider(string),trusted_service_account_id(string),project_info(ProjectInfo),scope(string),domain_id(string),tags(Struct),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "ServiceAccount",
+        "verb": "delete",
+        "request": "service_account_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "ServiceAccount",
+        "verb": "get",
+        "request": "service_account_id(string),domain_id(string),only(string)",
+        "response": "service_account_id(string),name(string),service_account_type(string),data(Struct),provider(string),trusted_service_account_id(string),project_info(ProjectInfo),scope(string),domain_id(string),tags(Struct),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "ServiceAccount",
+        "verb": "list",
+        "request": "query(Query),service_account_id(string),name(string),service_account_type(string),provider(string),trusted_service_account_id(string),project_id(string),scope(string),has_secret(bool),domain_id(string)",
+        "response": "results(ServiceAccountInfo),total_count(int32)"
+    },
+    {
+        "service": "identity",
+        "resource": "ServiceAccount",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string),has_secret(bool)",
+        "response": "Struct"
+    },
+    {
+        "service": "identity",
+        "resource": "APIKey",
+        "verb": "create",
+        "request": "user_id(string),domain_id(string)",
+        "response": "api_key_id(string),api_key(string),state(State),user_id(string),domain_id(string),last_accessed_at(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "APIKey",
+        "verb": "enable",
+        "request": "api_key_id(string),domain_id(string)",
+        "response": "api_key_id(string),api_key(string),state(State),user_id(string),domain_id(string),last_accessed_at(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "APIKey",
+        "verb": "disable",
+        "request": "api_key_id(string),domain_id(string)",
+        "response": "api_key_id(string),api_key(string),state(State),user_id(string),domain_id(string),last_accessed_at(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "APIKey",
+        "verb": "delete",
+        "request": "api_key_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "APIKey",
+        "verb": "get",
+        "request": "api_key_id(string),domain_id(string),only(string)",
+        "response": "api_key_id(string),api_key(string),state(State),user_id(string),domain_id(string),last_accessed_at(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "APIKey",
+        "verb": "list",
+        "request": "query(Query),api_key_id(string),state(State),user_id(string),domain_id(string)",
+        "response": "results(APIKeyInfo),total_count(int32)"
+    },
+    {
+        "service": "identity",
+        "resource": "APIKey",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "identity",
+        "resource": "Endpoint",
+        "verb": "list",
+        "request": "query(Query),service(string),endpoint_type(string),domain_id(string)",
+        "response": "results(EndpointInfo),total_count(int32)"
+    },
+    {
+        "service": "identity",
+        "resource": "Authorization",
+        "verb": "verify",
+        "request": "",
+        "response": ""
+    },
+    {
+        "service": "identity",
+        "resource": "RoleBinding",
+        "verb": "create",
+        "request": "resource_type(string),resource_id(string),role_id(string),project_id(string),project_group_id(string),labels(ListValue),tags(Struct),domain_id(string)",
+        "response": "role_binding_id(string),resource_type(string),resource_id(string),role_info(RoleInfo),project_info(ProjectInfo),project_group_info(ProjectGroupInfo),labels(ListValue),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "RoleBinding",
+        "verb": "update",
+        "request": "role_binding_id(string),labels(ListValue),tags(Struct),domain_id(string)",
+        "response": "role_binding_id(string),resource_type(string),resource_id(string),role_info(RoleInfo),project_info(ProjectInfo),project_group_info(ProjectGroupInfo),labels(ListValue),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "RoleBinding",
+        "verb": "delete",
+        "request": "role_binding_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "RoleBinding",
+        "verb": "get",
+        "request": "role_binding_id(string),domain_id(string),only(string)",
+        "response": "role_binding_id(string),resource_type(string),resource_id(string),role_info(RoleInfo),project_info(ProjectInfo),project_group_info(ProjectGroupInfo),labels(ListValue),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "RoleBinding",
+        "verb": "list",
+        "request": "query(Query),role_binding_id(string),resource_type(string),resource_id(string),role_id(string),role_type(string),project_id(string),project_group_id(string),domain_id(string)",
+        "response": "results(RoleBindingInfo),total_count(int32)"
+    },
+    {
+        "service": "identity",
+        "resource": "RoleBinding",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "create",
+        "request": "user_id(string),password(string),name(string),email(string),user_type(UserType),backend(UserBackend),language(string),timezone(string),tags(Struct),domain_id(string),reset_password(bool)",
+        "response": "user_id(string),name(string),state(State),email(string),user_type(UserType),backend(UserBackend),language(string),timezone(string),required_actions(UserRequiredAction),tags(Struct),last_accessed_at(string),created_at(string),domain_id(string),email_verified(bool),mfa(MFA)"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "update",
+        "request": "user_id(string),password(string),name(string),email(string),language(string),timezone(string),tags(Struct),domain_id(string),reset_password(bool)",
+        "response": "user_id(string),name(string),state(State),email(string),user_type(UserType),backend(UserBackend),language(string),timezone(string),required_actions(UserRequiredAction),tags(Struct),last_accessed_at(string),created_at(string),domain_id(string),email_verified(bool),mfa(MFA)"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "verify_email",
+        "request": "user_id(string),email(string),force(bool),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "confirm_email",
+        "request": "user_id(string),verify_code(string),domain_id(string)",
+        "response": "user_id(string),name(string),state(State),email(string),user_type(UserType),backend(UserBackend),language(string),timezone(string),required_actions(UserRequiredAction),tags(Struct),last_accessed_at(string),created_at(string),domain_id(string),email_verified(bool),mfa(MFA)"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "reset_password",
+        "request": "user_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "set_required_actions",
+        "request": "user_id(string),actions(UserRequiredAction),domain_id(string)",
+        "response": "user_id(string),name(string),state(State),email(string),user_type(UserType),backend(UserBackend),language(string),timezone(string),required_actions(UserRequiredAction),tags(Struct),last_accessed_at(string),created_at(string),domain_id(string),email_verified(bool),mfa(MFA)"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "enable_mfa",
+        "request": "user_id(string),mfa_type(string),options(Struct),domain_id(string)",
+        "response": "user_id(string),name(string),state(State),email(string),user_type(UserType),backend(UserBackend),language(string),timezone(string),required_actions(UserRequiredAction),tags(Struct),last_accessed_at(string),created_at(string),domain_id(string),email_verified(bool),mfa(MFA)"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "disable_mfa",
+        "request": "user_id(string),force(bool),domain_id(string)",
+        "response": "user_id(string),name(string),state(State),email(string),user_type(UserType),backend(UserBackend),language(string),timezone(string),required_actions(UserRequiredAction),tags(Struct),last_accessed_at(string),created_at(string),domain_id(string),email_verified(bool),mfa(MFA)"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "confirm_mfa",
+        "request": "user_id(string),verify_code(string),domain_id(string)",
+        "response": "user_id(string),name(string),state(State),email(string),user_type(UserType),backend(UserBackend),language(string),timezone(string),required_actions(UserRequiredAction),tags(Struct),last_accessed_at(string),created_at(string),domain_id(string),email_verified(bool),mfa(MFA)"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "enable",
+        "request": "user_id(string),domain_id(string)",
+        "response": "user_id(string),name(string),state(State),email(string),user_type(UserType),backend(UserBackend),language(string),timezone(string),required_actions(UserRequiredAction),tags(Struct),last_accessed_at(string),created_at(string),domain_id(string),email_verified(bool),mfa(MFA)"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "disable",
+        "request": "user_id(string),domain_id(string)",
+        "response": "user_id(string),name(string),state(State),email(string),user_type(UserType),backend(UserBackend),language(string),timezone(string),required_actions(UserRequiredAction),tags(Struct),last_accessed_at(string),created_at(string),domain_id(string),email_verified(bool),mfa(MFA)"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "delete",
+        "request": "user_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "get",
+        "request": "user_id(string),domain_id(string),only(string)",
+        "response": "user_id(string),name(string),state(State),email(string),user_type(UserType),backend(UserBackend),language(string),timezone(string),required_actions(UserRequiredAction),tags(Struct),last_accessed_at(string),created_at(string),domain_id(string),email_verified(bool),mfa(MFA)"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "list",
+        "request": "query(Query),user_id(string),name(string),state(string),email(string),user_type(UserType),backend(UserBackend),domain_id(string)",
+        "response": "results(UserInfo),total_count(int32)"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "find",
+        "request": "search(FindUserSearch),domain_id(string)",
+        "response": "results(FindUserInfo),total_count(int32)"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "sync",
+        "request": "user_id(string),domain_id(string)",
+        "response": "user_id(string),name(string),state(State),email(string),user_type(UserType),backend(UserBackend),language(string),timezone(string),required_actions(UserRequiredAction),tags(Struct),last_accessed_at(string),created_at(string),domain_id(string),email_verified(bool),mfa(MFA)"
+    },
+    {
+        "service": "identity",
+        "resource": "Provider",
+        "verb": "create",
+        "request": "provider(string),name(string),order(int32),template(Struct),metadata(Struct),capability(Struct),tags(Struct),domain_id(string)",
+        "response": "provider(string),name(string),order(int32),template(Struct),metadata(Struct),capability(Struct),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Provider",
+        "verb": "update",
+        "request": "provider(string),name(string),order(int32),template(Struct),metadata(Struct),capability(Struct),tags(Struct),domain_id(string)",
+        "response": "provider(string),name(string),order(int32),template(Struct),metadata(Struct),capability(Struct),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Provider",
+        "verb": "delete",
+        "request": "provider(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "Provider",
+        "verb": "get",
+        "request": "provider(string),only(string),domain_id(string)",
+        "response": "provider(string),name(string),order(int32),template(Struct),metadata(Struct),capability(Struct),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "Provider",
+        "verb": "list",
+        "request": "query(Query),provider(string),name(string),domain_id(string)",
+        "response": "results(ProviderInfo),total_count(int32)"
+    },
+    {
+        "service": "identity",
+        "resource": "Provider",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "identity",
+        "resource": "ProjectGroup",
+        "verb": "create",
+        "request": "name(string),parent_project_group_id(string),tags(Struct),domain_id(string)",
+        "response": "project_group_id(string),name(string),tags(Struct),parent_project_group_info(ProjectGroupInfo),domain_id(string),created_by(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "ProjectGroup",
+        "verb": "update",
+        "request": "project_group_id(string),name(string),parent_project_group_id(string),release_parent_project_group(bool),tags(Struct),domain_id(string)",
+        "response": "project_group_id(string),name(string),tags(Struct),parent_project_group_info(ProjectGroupInfo),domain_id(string),created_by(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "ProjectGroup",
+        "verb": "delete",
+        "request": "project_group_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "ProjectGroup",
+        "verb": "get",
+        "request": "project_group_id(string),domain_id(string),only(string)",
+        "response": "project_group_id(string),name(string),tags(Struct),parent_project_group_info(ProjectGroupInfo),domain_id(string),created_by(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "ProjectGroup",
+        "verb": "list",
+        "request": "query(Query),project_group_id(string),name(string),parent_project_group_id(string),author_within(bool),domain_id(string)",
+        "response": "results(ProjectGroupInfo),total_count(int32)"
+    },
+    {
+        "service": "identity",
+        "resource": "ProjectGroup",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "identity",
+        "resource": "ProjectGroup",
+        "verb": "add_member",
+        "request": "project_group_id(string),user_id(string),role_id(string),labels(ListValue),tags(Struct),domain_id(string),is_external_user(bool)",
+        "response": "role_binding_id(string),resource_type(string),resource_id(string),role_info(RoleInfo),project_group_info(ProjectGroupInfo),labels(ListValue),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "ProjectGroup",
+        "verb": "modify_member",
+        "request": "project_group_id(string),user_id(string),labels(ListValue),tags(Struct),domain_id(string)",
+        "response": "role_binding_id(string),resource_type(string),resource_id(string),role_info(RoleInfo),project_group_info(ProjectGroupInfo),labels(ListValue),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "ProjectGroup",
+        "verb": "remove_member",
+        "request": "project_group_id(string),user_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "ProjectGroup",
+        "verb": "list_members",
+        "request": "query(Query),project_group_id(string),user_id(string),role_id(string),include_parent_member(bool),domain_id(string)",
+        "response": "results(ProjectGroupRoleBindingInfo),total_count(int32)"
+    },
+    {
+        "service": "identity",
+        "resource": "ProjectGroup",
+        "verb": "list_projects",
+        "request": "query(Query),project_group_id(string),recursive(bool),domain_id(string)",
+        "response": "results(ProjectGroupProjectInfo),total_count(int32)"
+    },
+    {
+        "service": "board",
+        "resource": "Board",
+        "verb": "create",
+        "request": "name(string),categories(string),tags(Struct)",
+        "response": "board_id(string),name(string),categories(string),tags(Struct),created_at(string)"
+    },
+    {
+        "service": "board",
+        "resource": "Board",
+        "verb": "update",
+        "request": "board_id(string),name(string),tags(Struct)",
+        "response": "board_id(string),name(string),categories(string),tags(Struct),created_at(string)"
+    },
+    {
+        "service": "board",
+        "resource": "Board",
+        "verb": "set_categories",
+        "request": "board_id(string),categories(string)",
+        "response": "board_id(string),name(string),categories(string),tags(Struct),created_at(string)"
+    },
+    {
+        "service": "board",
+        "resource": "Board",
+        "verb": "delete",
+        "request": "board_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "board",
+        "resource": "Board",
+        "verb": "get",
+        "request": "board_id(string),only(string)",
+        "response": "board_id(string),name(string),categories(string),tags(Struct),created_at(string)"
+    },
+    {
+        "service": "board",
+        "resource": "Board",
+        "verb": "list",
+        "request": "board_id(string),name(string),query(Query)",
+        "response": "results(BoardInfo),total_count(int32)"
+    },
+    {
+        "service": "board",
+        "resource": "Board",
+        "verb": "stat",
+        "request": "query(StatisticsQuery)",
+        "response": "Struct"
+    },
+    {
+        "service": "board",
+        "resource": "Post",
+        "verb": "create",
+        "request": "board_id(string),category(string),title(string),contents(string),options(Struct),writer(string),files(string),domain_id(string)",
+        "response": "board_id(string),post_id(string),post_type(PostType),category(string),title(string),contents(string),options(Struct),view_count(int32),writer(string),scope(Scope),files(ListValue),domain_id(string),user_id(string),user_domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "board",
+        "resource": "Post",
+        "verb": "update",
+        "request": "board_id(string),post_id(string),category(string),title(string),contents(string),options(Struct),writer(string),files(string),domain_id(string)",
+        "response": "board_id(string),post_id(string),post_type(PostType),category(string),title(string),contents(string),options(Struct),view_count(int32),writer(string),scope(Scope),files(ListValue),domain_id(string),user_id(string),user_domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "board",
+        "resource": "Post",
+        "verb": "send_notification",
+        "request": "board_id(string),post_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "board",
+        "resource": "Post",
+        "verb": "delete",
+        "request": "board_id(string),post_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "board",
+        "resource": "Post",
+        "verb": "get",
+        "request": "board_id(string),post_id(string),only(string),domain_id(string)",
+        "response": "board_id(string),post_id(string),post_type(PostType),category(string),title(string),contents(string),options(Struct),view_count(int32),writer(string),scope(Scope),files(ListValue),domain_id(string),user_id(string),user_domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "board",
+        "resource": "Post",
+        "verb": "list",
+        "request": "board_id(string),post_id(string),post_type(PostType),category(string),writer(string),scope(Scope),user_id(string),user_domain_id(string),domain_id(string),query(Query)",
+        "response": "results(PostInfo),total_count(int32)"
+    },
+    {
+        "service": "board",
+        "resource": "Post",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "config",
+        "resource": "DomainConfig",
+        "verb": "create",
+        "request": "name(string),data(Struct),tags(Struct),domain_id(string)",
+        "response": "name(string),data(Struct),tags(Struct),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "config",
+        "resource": "DomainConfig",
+        "verb": "update",
+        "request": "name(string),data(Struct),tags(Struct),domain_id(string)",
+        "response": "name(string),data(Struct),tags(Struct),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "config",
+        "resource": "DomainConfig",
+        "verb": "set",
+        "request": "name(string),data(Struct),tags(Struct),domain_id(string)",
+        "response": "name(string),data(Struct),tags(Struct),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "config",
+        "resource": "DomainConfig",
+        "verb": "delete",
+        "request": "name(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "config",
+        "resource": "DomainConfig",
+        "verb": "get",
+        "request": "name(string),domain_id(string),only(string)",
+        "response": "name(string),data(Struct),tags(Struct),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "config",
+        "resource": "DomainConfig",
+        "verb": "list",
+        "request": "query(Query),name(string),domain_id(string)",
+        "response": "results(DomainConfigInfo),total_count(int32)"
+    },
+    {
+        "service": "config",
+        "resource": "DomainConfig",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "config",
+        "resource": "UserConfig",
+        "verb": "create",
+        "request": "name(string),data(Struct),tags(Struct),domain_id(string)",
+        "response": "name(string),data(Struct),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "config",
+        "resource": "UserConfig",
+        "verb": "update",
+        "request": "name(string),data(Struct),tags(Struct),domain_id(string)",
+        "response": "name(string),data(Struct),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "config",
+        "resource": "UserConfig",
+        "verb": "set",
+        "request": "name(string),data(Struct),tags(Struct),domain_id(string)",
+        "response": "name(string),data(Struct),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "config",
+        "resource": "UserConfig",
+        "verb": "delete",
+        "request": "name(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "config",
+        "resource": "UserConfig",
+        "verb": "get",
+        "request": "name(string),domain_id(string),only(string)",
+        "response": "name(string),data(Struct),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "config",
+        "resource": "UserConfig",
+        "verb": "list",
+        "request": "query(Query),name(string),user_id(string),domain_id(string)",
+        "response": "results(UserConfigInfo),total_count(int32)"
+    },
+    {
+        "service": "config",
+        "resource": "UserConfig",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "notification",
+        "resource": "Quota",
+        "verb": "create",
+        "request": "protocol_id(string),limit(Struct),domain_id(string)",
+        "response": "quota_id(string),protocol_id(string),limit(Struct),domain_id(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "Quota",
+        "verb": "update",
+        "request": "quota_id(string),limit(Struct),domain_id(string)",
+        "response": "quota_id(string),protocol_id(string),limit(Struct),domain_id(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "Quota",
+        "verb": "delete",
+        "request": "quota_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "notification",
+        "resource": "Quota",
+        "verb": "get",
+        "request": "quota_id(string),domain_id(string)",
+        "response": "quota_id(string),protocol_id(string),limit(Struct),domain_id(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "Quota",
+        "verb": "list",
+        "request": "query(Query),quota_id(string),protocol_id(string),domain_id(string)",
+        "response": "results(QuotaInfo),total_count(int32)"
+    },
+    {
+        "service": "notification",
+        "resource": "Quota",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "notification",
+        "resource": "UserChannel",
+        "verb": "create",
+        "request": "protocol_id(string),name(string),data(Struct),is_subscribe(bool),subscriptions(string),is_scheduled(bool),schedule(UserChannelSchedule),tags(Struct),user_id(string),domain_id(string)",
+        "response": "user_channel_id(string),name(string),state(UserChannelState),data(Struct),secret_id(string),is_subscribe(bool),subscriptions(string),is_scheduled(bool),schedule(UserChannelSchedule),tags(Struct),protocol_id(string),user_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "UserChannel",
+        "verb": "update",
+        "request": "user_channel_id(string),name(string),data(Struct),schedule(UserChannelSchedule),tags(Struct),domain_id(string)",
+        "response": "user_channel_id(string),name(string),state(UserChannelState),data(Struct),secret_id(string),is_subscribe(bool),subscriptions(string),is_scheduled(bool),schedule(UserChannelSchedule),tags(Struct),protocol_id(string),user_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "UserChannel",
+        "verb": "set_schedule",
+        "request": "user_channel_id(string),is_scheduled(bool),schedule(UserChannelSchedule),domain_id(string)",
+        "response": "user_channel_id(string),name(string),state(UserChannelState),data(Struct),secret_id(string),is_subscribe(bool),subscriptions(string),is_scheduled(bool),schedule(UserChannelSchedule),tags(Struct),protocol_id(string),user_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "UserChannel",
+        "verb": "set_subscription",
+        "request": "user_channel_id(string),is_subscribe(bool),subscriptions(string),domain_id(string)",
+        "response": "user_channel_id(string),name(string),state(UserChannelState),data(Struct),secret_id(string),is_subscribe(bool),subscriptions(string),is_scheduled(bool),schedule(UserChannelSchedule),tags(Struct),protocol_id(string),user_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "UserChannel",
+        "verb": "enable",
+        "request": "user_channel_id(string),domain_id(string)",
+        "response": "user_channel_id(string),name(string),state(UserChannelState),data(Struct),secret_id(string),is_subscribe(bool),subscriptions(string),is_scheduled(bool),schedule(UserChannelSchedule),tags(Struct),protocol_id(string),user_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "UserChannel",
+        "verb": "disable",
+        "request": "user_channel_id(string),domain_id(string)",
+        "response": "user_channel_id(string),name(string),state(UserChannelState),data(Struct),secret_id(string),is_subscribe(bool),subscriptions(string),is_scheduled(bool),schedule(UserChannelSchedule),tags(Struct),protocol_id(string),user_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "UserChannel",
+        "verb": "delete",
+        "request": "user_channel_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "notification",
+        "resource": "UserChannel",
+        "verb": "get",
+        "request": "user_channel_id(string),domain_id(string),only(string)",
+        "response": "user_channel_id(string),name(string),state(UserChannelState),data(Struct),secret_id(string),is_subscribe(bool),subscriptions(string),is_scheduled(bool),schedule(UserChannelSchedule),tags(Struct),protocol_id(string),user_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "UserChannel",
+        "verb": "list",
+        "request": "query(Query),user_channel_id(string),name(string),state(UserChannelState),secret_id(string),protocol_id(string),user_id(string),domain_id(string)",
+        "response": "results(UserChannelInfo),total_count(int32)"
+    },
+    {
+        "service": "notification",
+        "resource": "UserChannel",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "notification",
+        "resource": "NotificationUsage",
+        "verb": "list",
+        "request": "query(Query),protocol_id(string),domain_id(string)",
+        "response": "results(NotificationUsageInfo),total_count(int32)"
+    },
+    {
+        "service": "notification",
+        "resource": "NotificationUsage",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "notification",
+        "resource": "ProjectChannel",
+        "verb": "create",
+        "request": "protocol_id(string),name(string),data(Struct),is_subscribe(bool),subscriptions(string),notification_level(NotificationLevel),is_scheduled(bool),schedule(ProjectChannelSchedule),tags(Struct),project_id(string),domain_id(string)",
+        "response": "project_channel_id(string),name(string),state(ProjectChannelState),data(Struct),secret_id(string),is_subscribe(bool),subscriptions(string),notification_level(NotificationLevel),is_scheduled(bool),schedule(ProjectChannelSchedule),tags(Struct),protocol_id(string),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "ProjectChannel",
+        "verb": "update",
+        "request": "project_channel_id(string),name(string),data(Struct),notification_level(NotificationLevel),tags(Struct),domain_id(string)",
+        "response": "project_channel_id(string),name(string),state(ProjectChannelState),data(Struct),secret_id(string),is_subscribe(bool),subscriptions(string),notification_level(NotificationLevel),is_scheduled(bool),schedule(ProjectChannelSchedule),tags(Struct),protocol_id(string),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "ProjectChannel",
+        "verb": "set_schedule",
+        "request": "project_channel_id(string),is_scheduled(bool),schedule(ProjectChannelSchedule),domain_id(string)",
+        "response": "project_channel_id(string),name(string),state(ProjectChannelState),data(Struct),secret_id(string),is_subscribe(bool),subscriptions(string),notification_level(NotificationLevel),is_scheduled(bool),schedule(ProjectChannelSchedule),tags(Struct),protocol_id(string),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "ProjectChannel",
+        "verb": "set_subscription",
+        "request": "project_channel_id(string),is_subscribe(bool),subscriptions(string),domain_id(string)",
+        "response": "project_channel_id(string),name(string),state(ProjectChannelState),data(Struct),secret_id(string),is_subscribe(bool),subscriptions(string),notification_level(NotificationLevel),is_scheduled(bool),schedule(ProjectChannelSchedule),tags(Struct),protocol_id(string),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "ProjectChannel",
+        "verb": "enable",
+        "request": "project_channel_id(string),domain_id(string)",
+        "response": "project_channel_id(string),name(string),state(ProjectChannelState),data(Struct),secret_id(string),is_subscribe(bool),subscriptions(string),notification_level(NotificationLevel),is_scheduled(bool),schedule(ProjectChannelSchedule),tags(Struct),protocol_id(string),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "ProjectChannel",
+        "verb": "disable",
+        "request": "project_channel_id(string),domain_id(string)",
+        "response": "project_channel_id(string),name(string),state(ProjectChannelState),data(Struct),secret_id(string),is_subscribe(bool),subscriptions(string),notification_level(NotificationLevel),is_scheduled(bool),schedule(ProjectChannelSchedule),tags(Struct),protocol_id(string),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "ProjectChannel",
+        "verb": "delete",
+        "request": "project_channel_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "notification",
+        "resource": "ProjectChannel",
+        "verb": "get",
+        "request": "project_channel_id(string),domain_id(string),only(string)",
+        "response": "project_channel_id(string),name(string),state(ProjectChannelState),data(Struct),secret_id(string),is_subscribe(bool),subscriptions(string),notification_level(NotificationLevel),is_scheduled(bool),schedule(ProjectChannelSchedule),tags(Struct),protocol_id(string),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "ProjectChannel",
+        "verb": "list",
+        "request": "query(Query),project_channel_id(string),name(string),state(ProjectChannelState),secret_id(string),notification_level(NotificationLevel),protocol_id(string),project_id(string),domain_id(string)",
+        "response": "results(ProjectChannelInfo),total_count(int32)"
+    },
+    {
+        "service": "notification",
+        "resource": "ProjectChannel",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "notification",
+        "resource": "Notification",
+        "verb": "create",
+        "request": "resource_type(string),resource_id(string),topic(string),message(Struct),notification_type(NotificationType),notification_level(NotificationLEVEL),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "notification",
+        "resource": "Notification",
+        "verb": "push",
+        "request": "protocol_id(string),data(Struct),message(Struct),notification_type(string),notification_level(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "notification",
+        "resource": "Notification",
+        "verb": "delete",
+        "request": "notifications(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "notification",
+        "resource": "Notification",
+        "verb": "set_read",
+        "request": "notifications(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "notification",
+        "resource": "Notification",
+        "verb": "get",
+        "request": "notification_id(string),domain_id(string),only(string)",
+        "response": "notification_id(string),topic(string),message(Struct),notification_type(NotificationType),notification_level(NotificationLEVEL),is_read(bool),user_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "Notification",
+        "verb": "list",
+        "request": "query(Query),notification_id(string),topic(string),notification_type(NotificationType),notification_level(NotificationLEVEL),is_read(bool),parent_notification_id(string),project_id(string),user_id(string),domain_id(string)",
+        "response": "results(NotificationInfo),total_count(int32)"
+    },
+    {
+        "service": "notification",
+        "resource": "Notification",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "notification",
+        "resource": "Protocol",
+        "verb": "create",
+        "request": "name(string),plugin_info(PluginRequest),tags(Struct),domain_id(string)",
+        "response": "protocol_id(string),name(string),state(ProtocolState),protocol_type(ProtocolType),resource_type(string),capability(Struct),plugin_info(PluginInfo),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "Protocol",
+        "verb": "update",
+        "request": "protocol_id(string),name(string),tags(Struct),domain_id(string)",
+        "response": "protocol_id(string),name(string),state(ProtocolState),protocol_type(ProtocolType),resource_type(string),capability(Struct),plugin_info(PluginInfo),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "Protocol",
+        "verb": "update_plugin",
+        "request": "protocol_id(string),version(string),options(Struct),domain_id(string)",
+        "response": "protocol_id(string),name(string),state(ProtocolState),protocol_type(ProtocolType),resource_type(string),capability(Struct),plugin_info(PluginInfo),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "Protocol",
+        "verb": "enable",
+        "request": "protocol_id(string),domain_id(string)",
+        "response": "protocol_id(string),name(string),state(ProtocolState),protocol_type(ProtocolType),resource_type(string),capability(Struct),plugin_info(PluginInfo),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "Protocol",
+        "verb": "disable",
+        "request": "protocol_id(string),domain_id(string)",
+        "response": "protocol_id(string),name(string),state(ProtocolState),protocol_type(ProtocolType),resource_type(string),capability(Struct),plugin_info(PluginInfo),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "Protocol",
+        "verb": "delete",
+        "request": "protocol_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "notification",
+        "resource": "Protocol",
+        "verb": "get",
+        "request": "protocol_id(string),domain_id(string),only(string)",
+        "response": "protocol_id(string),name(string),state(ProtocolState),protocol_type(ProtocolType),resource_type(string),capability(Struct),plugin_info(PluginInfo),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "Protocol",
+        "verb": "list",
+        "request": "query(Query),protocol_id(string),name(string),state(ProtocolState),protocol_type(ProtocolType),domain_id(string)",
+        "response": "results(ProtocolInfo),total_count(int32)"
+    },
+    {
+        "service": "notification",
+        "resource": "Protocol",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "plugin",
+        "resource": "Supervisor",
+        "verb": "publish",
+        "request": "name(string),hostname(string),secret_key(string),plugin_info(PluginInfo),tags(Struct),is_public(bool),domain_id(string),labels(Struct)",
+        "response": "supervisor_id(string),name(string),hostname(string),state(State),is_public(bool),domain_id(string),tags(Struct),labels(Struct),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "plugin",
+        "resource": "Supervisor",
+        "verb": "register",
+        "request": "supervisor_id(string),name(string),is_public(bool),priority(int32),labels(Struct),tags(Struct),domain_id(string)",
+        "response": "supervisor_id(string),name(string),hostname(string),state(State),is_public(bool),domain_id(string),tags(Struct),labels(Struct),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "plugin",
+        "resource": "Supervisor",
+        "verb": "update",
+        "request": "supervisor_id(string),name(string),is_public(bool),priority(int32),labels(Struct),tags(Struct),domain_id(string)",
+        "response": "supervisor_id(string),name(string),hostname(string),state(State),is_public(bool),domain_id(string),tags(Struct),labels(Struct),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "plugin",
+        "resource": "Supervisor",
+        "verb": "deregister",
+        "request": "supervisor_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "plugin",
+        "resource": "Supervisor",
+        "verb": "enable",
+        "request": "supervisor_id(string),domain_id(string)",
+        "response": "supervisor_id(string),name(string),hostname(string),state(State),is_public(bool),domain_id(string),tags(Struct),labels(Struct),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "plugin",
+        "resource": "Supervisor",
+        "verb": "disable",
+        "request": "supervisor_id(string),domain_id(string)",
+        "response": "supervisor_id(string),name(string),hostname(string),state(State),is_public(bool),domain_id(string),tags(Struct),labels(Struct),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "plugin",
+        "resource": "Supervisor",
+        "verb": "recover_plugin",
+        "request": "supervisor_id(string),plugin_id(string),version(string),domain_id(string)",
+        "response": "plugin_id(string),version(string),state(State),endpoint(string),supervisor_id(string),supervisor_name(string),managed(bool),endpoints(string),domain_id(string)"
+    },
+    {
+        "service": "plugin",
+        "resource": "Supervisor",
+        "verb": "get",
+        "request": "supervisor_id(string),domain_id(string),only(string)",
+        "response": "supervisor_id(string),name(string),hostname(string),state(State),is_public(bool),domain_id(string),tags(Struct),labels(Struct),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "plugin",
+        "resource": "Supervisor",
+        "verb": "list",
+        "request": "query(Query),supervisor_id(string),name(string),is_public(bool),domain_id(string)",
+        "response": "results(SupervisorInfo),total_count(int32)"
+    },
+    {
+        "service": "plugin",
+        "resource": "Supervisor",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "plugin",
+        "resource": "Supervisor",
+        "verb": "list_plugins",
+        "request": "query(Query),supervisor_id(string),hostname(string),plugin_id(string),version(string),state(State),endpoint(string),domain_id(string)",
+        "response": "results(PluginInfo),total_count(int32)"
+    },
+    {
+        "service": "plugin",
+        "resource": "Plugin",
+        "verb": "get_plugin_endpoint",
+        "request": "plugin_id(string),version(string),labels(Struct),domain_id(string),upgrade_mode(UpgradeMode)",
+        "response": "endpoint(string),access_token(string),updated_version(string)"
+    },
+    {
+        "service": "plugin",
+        "resource": "Plugin",
+        "verb": "get_plugin_metadata",
+        "request": "plugin_id(string),version(string),options(Struct),domain_id(string),upgrade_mode(UpgradeMode)",
+        "response": "metadata(Struct)"
+    },
+    {
+        "service": "plugin",
+        "resource": "Plugin",
+        "verb": "notify_failure",
+        "request": "supervisor_id(string),plugin_id(string),version(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "BudgetUsage",
+        "verb": "list",
+        "request": "query(Query),budget_id(string),data_source_id(string),name(string),date(string),domain_id(string)",
+        "response": "results(BudgetUsageInfo),total_count(int32)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "BudgetUsage",
+        "verb": "analyze",
+        "request": "query(TimeSeriesAnalyzeQuery),budget_id(string),data_source_id(string),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "BudgetUsage",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),budget_id(string),data_source_id(string),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Cost",
+        "verb": "create",
+        "request": "cost(double),usage_quantity(double),usage_unit(float),provider(string),region_code(string),product(string),usage_type(string),resource(string),tags(Struct),additional_info(Struct),service_account_id(string),project_id(string),data_source_id(string),domain_id(string),billed_date(string)",
+        "response": "cost_id(string),cost(double),usage_quantity(double),usage_unit(string),provider(string),region_code(string),region_key(string),product(string),usage_type(string),resource(string),tags(Struct),additional_info(Struct),service_account_id(string),project_id(string),project_group_id(string),data_source_id(string),domain_id(string),billed_year(string),billed_month(string),billed_date(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Cost",
+        "verb": "delete",
+        "request": "cost_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Cost",
+        "verb": "get",
+        "request": "cost_id(string),domain_id(string),only(string)",
+        "response": "cost_id(string),cost(double),usage_quantity(double),usage_unit(string),provider(string),region_code(string),region_key(string),product(string),usage_type(string),resource(string),tags(Struct),additional_info(Struct),service_account_id(string),project_id(string),project_group_id(string),data_source_id(string),domain_id(string),billed_year(string),billed_month(string),billed_date(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Cost",
+        "verb": "list",
+        "request": "query(Query),cost_id(string),provider(string),region_code(string),region_key(string),product(string),usage_type(string),resource(string),service_account_id(string),project_id(string),project_group_id(string),data_source_id(string),domain_id(string),billed_year(string),billed_month(string),billed_date(string)",
+        "response": "results(CostInfo),total_count(int32)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Cost",
+        "verb": "analyze",
+        "request": "query(TimeSeriesAnalyzeQuery),data_source_id(string),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Cost",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),data_source_id(string),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSourceRule",
+        "verb": "create",
+        "request": "data_source_id(string),name(string),conditions(DataSourceRuleCondition),conditions_policy(ConditionsPolicy),actions(DataSourceRuleActions),options(DataSourceRuleOptions),tags(Struct),domain_id(string)",
+        "response": "data_source_rule_id(string),name(string),order(int32),conditions(DataSourceRuleCondition),conditions_policy(ConditionsPolicy),actions(DataSourceRuleActions),options(DataSourceRuleOptions),tags(Struct),rule_type(string),data_source_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSourceRule",
+        "verb": "update",
+        "request": "data_source_rule_id(string),name(string),conditions(DataSourceRuleCondition),conditions_policy(ConditionsPolicy),actions(DataSourceRuleActions),options(DataSourceRuleOptions),tags(Struct),domain_id(string)",
+        "response": "data_source_rule_id(string),name(string),order(int32),conditions(DataSourceRuleCondition),conditions_policy(ConditionsPolicy),actions(DataSourceRuleActions),options(DataSourceRuleOptions),tags(Struct),rule_type(string),data_source_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSourceRule",
+        "verb": "change_order",
+        "request": "data_source_rule_id(string),order(int32),domain_id(string)",
+        "response": "data_source_rule_id(string),name(string),order(int32),conditions(DataSourceRuleCondition),conditions_policy(ConditionsPolicy),actions(DataSourceRuleActions),options(DataSourceRuleOptions),tags(Struct),rule_type(string),data_source_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSourceRule",
+        "verb": "delete",
+        "request": "data_source_rule_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSourceRule",
+        "verb": "get",
+        "request": "data_source_rule_id(string),domain_id(string),only(string)",
+        "response": "data_source_rule_id(string),name(string),order(int32),conditions(DataSourceRuleCondition),conditions_policy(ConditionsPolicy),actions(DataSourceRuleActions),options(DataSourceRuleOptions),tags(Struct),rule_type(string),data_source_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSourceRule",
+        "verb": "list",
+        "request": "query(Query),data_source_rule_id(string),name(string),rule_type(string),data_source_id(string),domain_id(string)",
+        "response": "results(DataSourceRuleInfo),total_count(int32)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSourceRule",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "JobTask",
+        "verb": "get",
+        "request": "job_task_id(string),domain_id(string),only(string)",
+        "response": "job_task_id(string),status(Status),options(Struct),created_count(int32),error_code(string),error_message(string),job_id(string),data_source_id(string),domain_id(string),created_at(string),started_at(string),updated_at(string),finished_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "JobTask",
+        "verb": "list",
+        "request": "query(Query),job_task_id(string),status(Status),job_id(string),data_source_id(string),domain_id(string)",
+        "response": "results(JobTaskInfo),total_count(int32)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "JobTask",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "CostQuerySet",
+        "verb": "create",
+        "request": "data_source_id(string),name(string),options(Struct),tags(Struct),domain_id(string)",
+        "response": "cost_query_set_id(string),name(string),options(Struct),tags(Struct),user_id(string),data_source_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "CostQuerySet",
+        "verb": "update",
+        "request": "cost_query_set_id(string),name(string),options(Struct),tags(Struct),domain_id(string)",
+        "response": "cost_query_set_id(string),name(string),options(Struct),tags(Struct),user_id(string),data_source_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "CostQuerySet",
+        "verb": "delete",
+        "request": "cost_query_set_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "CostQuerySet",
+        "verb": "get",
+        "request": "cost_query_set_id(string),domain_id(string),only(string)",
+        "response": "cost_query_set_id(string),name(string),options(Struct),tags(Struct),user_id(string),data_source_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "CostQuerySet",
+        "verb": "list",
+        "request": "query(Query),data_source_id(string),cost_query_set_id(string),name(string),user_id(string),domain_id(string)",
+        "response": "results(CostQuerySetInfo),total_count(int32)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "CostQuerySet",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),data_source_id(string),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "CustomWidget",
+        "verb": "create",
+        "request": "name(string),options(Struct),tags(Struct),domain_id(string)",
+        "response": "widget_id(string),name(string),options(Struct),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "CustomWidget",
+        "verb": "update",
+        "request": "widget_id(string),name(string),options(Struct),tags(Struct),domain_id(string)",
+        "response": "widget_id(string),name(string),options(Struct),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "CustomWidget",
+        "verb": "delete",
+        "request": "widget_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "CustomWidget",
+        "verb": "get",
+        "request": "widget_id(string),domain_id(string),only(string)",
+        "response": "widget_id(string),name(string),options(Struct),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "CustomWidget",
+        "verb": "list",
+        "request": "query(Query),widget_id(string),name(string),user_id(string),domain_id(string)",
+        "response": "results(CustomWidgetInfo),total_count(int32)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "CustomWidget",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "PublicDashboard",
+        "verb": "create",
+        "request": "name(string),default_layout_id(string),custom_layouts(ListValue),default_filter(Struct),period_type(PeriodType),period(PublicDashboardPeriod),tags(Struct),domain_id(string)",
+        "response": "public_dashboard_id(string),name(string),default_layout_id(string),custom_layouts(ListValue),default_filter(Struct),period_type(PeriodType),period(PublicDashboardPeriod),tags(Struct),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "PublicDashboard",
+        "verb": "update",
+        "request": "public_dashboard_id(string),name(string),default_layout_id(string),custom_layouts(ListValue),default_filter(Struct),period_type(PeriodType),period(PublicDashboardPeriod),tags(Struct),domain_id(string)",
+        "response": "public_dashboard_id(string),name(string),default_layout_id(string),custom_layouts(ListValue),default_filter(Struct),period_type(PeriodType),period(PublicDashboardPeriod),tags(Struct),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "PublicDashboard",
+        "verb": "delete",
+        "request": "public_dashboard_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "PublicDashboard",
+        "verb": "get",
+        "request": "public_dashboard_id(string),domain_id(string),only(string)",
+        "response": "public_dashboard_id(string),name(string),default_layout_id(string),custom_layouts(ListValue),default_filter(Struct),period_type(PeriodType),period(PublicDashboardPeriod),tags(Struct),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "PublicDashboard",
+        "verb": "list",
+        "request": "query(Query),public_dashboard_id(string),name(string),period_type(PeriodType),domain_id(string)",
+        "response": "results(PublicDashboardInfo),total_count(int32)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "PublicDashboard",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Budget",
+        "verb": "create",
+        "request": "name(string),limit(float),planned_limits(PlannedLimit),provider_filter(ProviderFilter),time_unit(TimeUnit),start(string),end(string),notifications(BudgetNotification),tags(Struct),project_id(string),project_group_id(string),data_source_id(string),domain_id(string)",
+        "response": "budget_id(string),name(string),limit(float),planned_limits(PlannedLimit),currency(string),provider_filter(ProviderFilter),time_unit(TimeUnit),start(string),end(string),notifications(BudgetNotification),tags(Struct),project_id(string),project_group_id(string),data_source_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Budget",
+        "verb": "update",
+        "request": "budget_id(string),name(string),limit(float),planned_limits(PlannedLimit),tags(Struct),domain_id(string)",
+        "response": "budget_id(string),name(string),limit(float),planned_limits(PlannedLimit),currency(string),provider_filter(ProviderFilter),time_unit(TimeUnit),start(string),end(string),notifications(BudgetNotification),tags(Struct),project_id(string),project_group_id(string),data_source_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Budget",
+        "verb": "set_notification",
+        "request": "budget_id(string),notifications(BudgetNotification),domain_id(string)",
+        "response": "budget_id(string),name(string),limit(float),planned_limits(PlannedLimit),currency(string),provider_filter(ProviderFilter),time_unit(TimeUnit),start(string),end(string),notifications(BudgetNotification),tags(Struct),project_id(string),project_group_id(string),data_source_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Budget",
+        "verb": "delete",
+        "request": "budget_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Budget",
+        "verb": "get",
+        "request": "budget_id(string),domain_id(string),only(string)",
+        "response": "budget_id(string),name(string),limit(float),planned_limits(PlannedLimit),currency(string),provider_filter(ProviderFilter),time_unit(TimeUnit),start(string),end(string),notifications(BudgetNotification),tags(Struct),project_id(string),project_group_id(string),data_source_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Budget",
+        "verb": "list",
+        "request": "query(Query),budget_id(string),name(string),project_id(string),project_group_id(string),time_unit(TimeUnit),data_source_id(string),domain_id(string)",
+        "response": "results(BudgetInfo),total_count(int32)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Budget",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "ExchangeRate",
+        "verb": "set",
+        "request": "currency(string),rate(float),domain_id(string)",
+        "response": "currency(string),rate(float),state(State),is_default(bool),domain_id(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "ExchangeRate",
+        "verb": "reset",
+        "request": "currency(string),domain_id(string)",
+        "response": "currency(string),rate(float),state(State),is_default(bool),domain_id(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "ExchangeRate",
+        "verb": "enable",
+        "request": "currency(string),domain_id(string)",
+        "response": "currency(string),rate(float),state(State),is_default(bool),domain_id(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "ExchangeRate",
+        "verb": "disable",
+        "request": "currency(string),domain_id(string)",
+        "response": "currency(string),rate(float),state(State),is_default(bool),domain_id(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "ExchangeRate",
+        "verb": "get",
+        "request": "currency(string),domain_id(string)",
+        "response": "currency(string),rate(float),state(State),is_default(bool),domain_id(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "ExchangeRate",
+        "verb": "list",
+        "request": "domain_id(string)",
+        "response": "results(ExchangeRateInfo),total_count(int32)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Job",
+        "verb": "cancel",
+        "request": "job_id(string),domain_id(string)",
+        "response": "job_id(string),status(Status),options(Struct),error_code(string),error_message(string),total_tasks(int32),remained_tasks(int32),data_source_id(string),domain_id(string),created_at(string),updated_at(string),finished_at(string),changed(ChangedInfo)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Job",
+        "verb": "get",
+        "request": "job_id(string),domain_id(string),only(string)",
+        "response": "job_id(string),status(Status),options(Struct),error_code(string),error_message(string),total_tasks(int32),remained_tasks(int32),data_source_id(string),domain_id(string),created_at(string),updated_at(string),finished_at(string),changed(ChangedInfo)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Job",
+        "verb": "list",
+        "request": "query(Query),job_id(string),status(Status),data_source_id(string),domain_id(string)",
+        "response": "results(JobInfo),total_count(int32)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Job",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSource",
+        "verb": "register",
+        "request": "name(string),data_source_type(DataSourceType),provider(string),template(Struct),plugin_info(PluginInfo),tags(Struct),secret_type(SecretType),secret_filter(SecretFilter),domain_id(string)",
+        "response": "data_source_id(string),name(string),state(State),data_source_type(DataSourceType),provider(string),plugin_info(PluginInfo),secret_type(SecretType),secret_filter(SecretFilter),template(Struct),tags(Struct),cost_tag_keys(string),cost_additional_info_keys(string),cost_data_keys(string),domain_id(string),created_at(string),last_synchronized_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSource",
+        "verb": "update",
+        "request": "data_source_id(string),name(string),template(Struct),tags(Struct),secret_filter(SecretFilter),domain_id(string)",
+        "response": "data_source_id(string),name(string),state(State),data_source_type(DataSourceType),provider(string),plugin_info(PluginInfo),secret_type(SecretType),secret_filter(SecretFilter),template(Struct),tags(Struct),cost_tag_keys(string),cost_additional_info_keys(string),cost_data_keys(string),domain_id(string),created_at(string),last_synchronized_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSource",
+        "verb": "update_plugin",
+        "request": "data_source_id(string),version(string),options(Struct),upgrade_mode(UpgradeMode),domain_id(string)",
+        "response": "data_source_id(string),name(string),state(State),data_source_type(DataSourceType),provider(string),plugin_info(PluginInfo),secret_type(SecretType),secret_filter(SecretFilter),template(Struct),tags(Struct),cost_tag_keys(string),cost_additional_info_keys(string),cost_data_keys(string),domain_id(string),created_at(string),last_synchronized_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSource",
+        "verb": "verify_plugin",
+        "request": "data_source_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSource",
+        "verb": "enable",
+        "request": "data_source_id(string),domain_id(string)",
+        "response": "data_source_id(string),name(string),state(State),data_source_type(DataSourceType),provider(string),plugin_info(PluginInfo),secret_type(SecretType),secret_filter(SecretFilter),template(Struct),tags(Struct),cost_tag_keys(string),cost_additional_info_keys(string),cost_data_keys(string),domain_id(string),created_at(string),last_synchronized_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSource",
+        "verb": "disable",
+        "request": "data_source_id(string),domain_id(string)",
+        "response": "data_source_id(string),name(string),state(State),data_source_type(DataSourceType),provider(string),plugin_info(PluginInfo),secret_type(SecretType),secret_filter(SecretFilter),template(Struct),tags(Struct),cost_tag_keys(string),cost_additional_info_keys(string),cost_data_keys(string),domain_id(string),created_at(string),last_synchronized_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSource",
+        "verb": "deregister",
+        "request": "data_source_id(string),cascade_delete_cost(bool),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSource",
+        "verb": "sync",
+        "request": "data_source_id(string),start(string),no_preload_cache(bool),domain_id(string)",
+        "response": ""
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSource",
+        "verb": "get",
+        "request": "data_source_id(string),domain_id(string),only(string)",
+        "response": "data_source_id(string),name(string),state(State),data_source_type(DataSourceType),provider(string),plugin_info(PluginInfo),secret_type(SecretType),secret_filter(SecretFilter),template(Struct),tags(Struct),cost_tag_keys(string),cost_additional_info_keys(string),cost_data_keys(string),domain_id(string),created_at(string),last_synchronized_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSource",
+        "verb": "list",
+        "request": "query(Query),data_source_id(string),name(string),state(string),data_source_type(DataSourceType),provider(string),domain_id(string)",
+        "response": "results(DataSourceInfo),total_count(int32)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSource",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Schedule",
+        "verb": "create",
+        "request": "name(string),schedule(Scheduled),options(Struct),tags(Struct),data_source_id(string),domain_id(string)",
+        "response": "schedule_id(string),name(string),state(State),schedule(Scheduled),options(Struct),tags(Struct),data_source_id(string),domain_id(string),created_at(string),last_scheduled_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Schedule",
+        "verb": "update",
+        "request": "schedule_id(string),name(string),schedule(Scheduled),options(Struct),tags(Struct),domain_id(string)",
+        "response": "schedule_id(string),name(string),state(State),schedule(Scheduled),options(Struct),tags(Struct),data_source_id(string),domain_id(string),created_at(string),last_scheduled_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Schedule",
+        "verb": "enable",
+        "request": "schedule_id(string),domain_id(string)",
+        "response": "schedule_id(string),name(string),state(State),schedule(Scheduled),options(Struct),tags(Struct),data_source_id(string),domain_id(string),created_at(string),last_scheduled_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Schedule",
+        "verb": "disable",
+        "request": "schedule_id(string),domain_id(string)",
+        "response": "schedule_id(string),name(string),state(State),schedule(Scheduled),options(Struct),tags(Struct),data_source_id(string),domain_id(string),created_at(string),last_scheduled_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Schedule",
+        "verb": "delete",
+        "request": "schedule_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Schedule",
+        "verb": "get",
+        "request": "schedule_id(string),domain_id(string),only(string)",
+        "response": "schedule_id(string),name(string),state(State),schedule(Scheduled),options(Struct),tags(Struct),data_source_id(string),domain_id(string),created_at(string),last_scheduled_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Schedule",
+        "verb": "list",
+        "request": "query(Query),schedule_id(string),name(string),state(string),data_source_id(string),domain_id(string)",
+        "response": "results(ScheduleInfo),total_count(int32)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Schedule",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "UserDashboard",
+        "verb": "create",
+        "request": "name(string),default_layout_id(string),custom_layouts(ListValue),default_filter(Struct),period_type(PeriodType),period(UserDashboardPeriod),tags(Struct),domain_id(string)",
+        "response": "user_dashboard_id(string),name(string),default_layout_id(string),custom_layouts(ListValue),default_filter(Struct),period_type(PeriodType),period(UserDashboardPeriod),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "UserDashboard",
+        "verb": "update",
+        "request": "user_dashboard_id(string),name(string),default_layout_id(string),custom_layouts(ListValue),default_filter(Struct),period_type(PeriodType),period(UserDashboardPeriod),tags(Struct),domain_id(string)",
+        "response": "user_dashboard_id(string),name(string),default_layout_id(string),custom_layouts(ListValue),default_filter(Struct),period_type(PeriodType),period(UserDashboardPeriod),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "UserDashboard",
+        "verb": "delete",
+        "request": "user_dashboard_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "UserDashboard",
+        "verb": "get",
+        "request": "user_dashboard_id(string),domain_id(string),only(string)",
+        "response": "user_dashboard_id(string),name(string),default_layout_id(string),custom_layouts(ListValue),default_filter(Struct),period_type(PeriodType),period(UserDashboardPeriod),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "UserDashboard",
+        "verb": "list",
+        "request": "query(Query),user_dashboard_id(string),name(string),period_type(PeriodType),user_id(string),domain_id(string)",
+        "response": "results(UserDashboardInfo),total_count(int32)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "UserDashboard",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "dashboard",
+        "resource": "ProjectDashboard",
+        "verb": "create",
+        "request": "project_id(string),name(string),viewers(Viewers),layouts(ListValue),variables(Struct),settings(Struct),variables_schema(Struct),labels(ListValue),tags(Struct),domain_id(string)",
+        "response": "project_dashboard_id(string),project_id(string),name(string),viewers(Viewers),version(int32),layouts(ListValue),variables(Struct),settings(Struct),variables_schema(Struct),labels(ListValue),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "ProjectDashboard",
+        "verb": "update",
+        "request": "project_dashboard_id(string),name(string),layouts(ListValue),variables(Struct),settings(Struct),variables_schema(Struct),labels(ListValue),tags(Struct),domain_id(string)",
+        "response": "project_dashboard_id(string),project_id(string),name(string),viewers(Viewers),version(int32),layouts(ListValue),variables(Struct),settings(Struct),variables_schema(Struct),labels(ListValue),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "ProjectDashboard",
+        "verb": "delete",
+        "request": "project_dashboard_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "dashboard",
+        "resource": "ProjectDashboard",
+        "verb": "get",
+        "request": "project_dashboard_id(string),domain_id(string),only(string)",
+        "response": "project_dashboard_id(string),project_id(string),name(string),viewers(Viewers),version(int32),layouts(ListValue),variables(Struct),settings(Struct),variables_schema(Struct),labels(ListValue),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "ProjectDashboard",
+        "verb": "delete_version",
+        "request": "project_dashboard_id(string),version(int32),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "dashboard",
+        "resource": "ProjectDashboard",
+        "verb": "revert_version",
+        "request": "project_dashboard_id(string),version(int32),domain_id(string)",
+        "response": "project_dashboard_id(string),project_id(string),name(string),viewers(Viewers),version(int32),layouts(ListValue),variables(Struct),settings(Struct),variables_schema(Struct),labels(ListValue),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "ProjectDashboard",
+        "verb": "get_version",
+        "request": "project_dashboard_id(string),version(int32),domain_id(string),only(string)",
+        "response": "project_dashboard_id(string),version(int32),latest(bool),layouts(ListValue),variables(Struct),settings(Struct),variables_schema(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "ProjectDashboard",
+        "verb": "list_versions",
+        "request": "query(Query),project_dashboard_id(string),version(int32),domain_id(string)",
+        "response": "results(ProjectDashboardVersionInfo),total_count(int32)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "ProjectDashboard",
+        "verb": "list",
+        "request": "query(Query),project_dashboard_id(string),project_id(string),name(string),viewers(Viewers),user_id(string),domain_id(string)",
+        "response": "results(ProjectDashboardInfo),total_count(int32)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "ProjectDashboard",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "dashboard",
+        "resource": "CustomWidget",
+        "verb": "create",
+        "request": "widget_name(string),title(string),options(Struct),settings(Struct),inherit_options(Struct),labels(ListValue),tags(Struct),domain_id(string)",
+        "response": "custom_widget_id(string),widget_name(string),title(string),version(string),options(Struct),settings(Struct),inherit_options(Struct),labels(ListValue),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "CustomWidget",
+        "verb": "update",
+        "request": "custom_widget_id(string),title(string),options(Struct),settings(Struct),inherit_options(Struct),labels(ListValue),tags(Struct),domain_id(string)",
+        "response": "custom_widget_id(string),widget_name(string),title(string),version(string),options(Struct),settings(Struct),inherit_options(Struct),labels(ListValue),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "CustomWidget",
+        "verb": "delete",
+        "request": "custom_widget_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "dashboard",
+        "resource": "CustomWidget",
+        "verb": "get",
+        "request": "custom_widget_id(string),domain_id(string),only(string)",
+        "response": "custom_widget_id(string),widget_name(string),title(string),version(string),options(Struct),settings(Struct),inherit_options(Struct),labels(ListValue),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "CustomWidget",
+        "verb": "list",
+        "request": "query(Query),custom_widget_id(string),widget_name(string),title(string),user_id(string),domain_id(string)",
+        "response": "results(CustomWidgetInfo),total_count(int32)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "CustomWidget",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "dashboard",
+        "resource": "DomainDashboard",
+        "verb": "create",
+        "request": "name(string),viewers(Viewers),layouts(ListValue),variables(Struct),settings(Struct),variables_schema(Struct),labels(ListValue),tags(Struct),domain_id(string)",
+        "response": "domain_dashboard_id(string),name(string),viewers(Viewers),version(int32),layouts(ListValue),variables(Struct),settings(Struct),variables_schema(Struct),labels(ListValue),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "DomainDashboard",
+        "verb": "update",
+        "request": "domain_dashboard_id(string),name(string),layouts(ListValue),variables(Struct),settings(Struct),variables_schema(Struct),labels(ListValue),tags(Struct),domain_id(string)",
+        "response": "domain_dashboard_id(string),name(string),viewers(Viewers),version(int32),layouts(ListValue),variables(Struct),settings(Struct),variables_schema(Struct),labels(ListValue),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "DomainDashboard",
+        "verb": "delete",
+        "request": "domain_dashboard_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "dashboard",
+        "resource": "DomainDashboard",
+        "verb": "get",
+        "request": "domain_dashboard_id(string),domain_id(string),only(string)",
+        "response": "domain_dashboard_id(string),name(string),viewers(Viewers),version(int32),layouts(ListValue),variables(Struct),settings(Struct),variables_schema(Struct),labels(ListValue),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "DomainDashboard",
+        "verb": "delete_version",
+        "request": "domain_dashboard_id(string),version(int32),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "dashboard",
+        "resource": "DomainDashboard",
+        "verb": "revert_version",
+        "request": "domain_dashboard_id(string),version(int32),domain_id(string)",
+        "response": "domain_dashboard_id(string),name(string),viewers(Viewers),version(int32),layouts(ListValue),variables(Struct),settings(Struct),variables_schema(Struct),labels(ListValue),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "DomainDashboard",
+        "verb": "get_version",
+        "request": "domain_dashboard_id(string),version(int32),domain_id(string),only(string)",
+        "response": "domain_dashboard_id(string),version(int32),latest(bool),layouts(ListValue),variables(Struct),settings(Struct),variables_schema(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "DomainDashboard",
+        "verb": "list_versions",
+        "request": "query(Query),domain_dashboard_id(string),version(int32),domain_id(string)",
+        "response": "results(DomainDashboardVersionInfo),total_count(int32)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "DomainDashboard",
+        "verb": "list",
+        "request": "query(Query),domain_dashboard_id(string),name(string),viewers(Viewers),user_id(string),domain_id(string)",
+        "response": "results(DomainDashboardInfo),total_count(int32)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "DomainDashboard",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "file_manager",
+        "resource": "File",
+        "verb": "add",
+        "request": "name(string),tags(Struct),reference(FileReference),domain_id(string)",
+        "response": "file_id(string),name(string),state(FileState),scope(FileScope),file_type(string),upload_url(string),upload_options(Struct),download_url(string),tags(Struct),reference(FileReference),user_id(string),user_domain_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "file_manager",
+        "resource": "File",
+        "verb": "update",
+        "request": "file_id(string),tags(Struct),reference(FileReference),domain_id(string)",
+        "response": "file_id(string),name(string),state(FileState),scope(FileScope),file_type(string),upload_url(string),upload_options(Struct),download_url(string),tags(Struct),reference(FileReference),user_id(string),user_domain_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "file_manager",
+        "resource": "File",
+        "verb": "delete",
+        "request": "file_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "file_manager",
+        "resource": "File",
+        "verb": "get_download_url",
+        "request": "file_id(string),domain_id(string)",
+        "response": "file_id(string),name(string),state(FileState),scope(FileScope),file_type(string),upload_url(string),upload_options(Struct),download_url(string),tags(Struct),reference(FileReference),user_id(string),user_domain_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "file_manager",
+        "resource": "File",
+        "verb": "get",
+        "request": "file_id(string),domain_id(string),only(string)",
+        "response": "file_id(string),name(string),state(FileState),scope(FileScope),file_type(string),upload_url(string),upload_options(Struct),download_url(string),tags(Struct),reference(FileReference),user_id(string),user_domain_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "file_manager",
+        "resource": "File",
+        "verb": "list",
+        "request": "query(Query),file_id(string),name(string),state(FileState),scope(FileScope),file_type(string),resource_type(string),resource_id(string),user_domain_id(string),domain_id(string)",
+        "response": "results(FileInfo),total_count(int32)"
+    },
+    {
+        "service": "file_manager",
+        "resource": "File",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceType",
+        "verb": "create",
+        "request": "name(string),provider(string),group(string),service_code(string),is_primary(bool),is_major(bool),resource_type(string),metadata(Struct),labels(ListValue),tags(Struct),domain_id(string)",
+        "response": "cloud_service_type_id(string),name(string),provider(string),group(string),cloud_service_type_key(string),service_code(string),is_primary(bool),is_major(bool),resource_type(string),metadata(Struct),tags(Struct),labels(ListValue),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceType",
+        "verb": "update",
+        "request": "cloud_service_type_id(string),service_code(string),is_primary(bool),is_major(bool),resource_type(string),metadata(Struct),labels(ListValue),tags(Struct),domain_id(string)",
+        "response": "cloud_service_type_id(string),name(string),provider(string),group(string),cloud_service_type_key(string),service_code(string),is_primary(bool),is_major(bool),resource_type(string),metadata(Struct),tags(Struct),labels(ListValue),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceType",
+        "verb": "delete",
+        "request": "cloud_service_type_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceType",
+        "verb": "get",
+        "request": "cloud_service_type_id(string),domain_id(string),only(string)",
+        "response": "cloud_service_type_id(string),name(string),provider(string),group(string),cloud_service_type_key(string),service_code(string),is_primary(bool),is_major(bool),resource_type(string),metadata(Struct),tags(Struct),labels(ListValue),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceType",
+        "verb": "list",
+        "request": "query(Query),cloud_service_type_id(string),name(string),provider(string),group(string),cloud_service_type_key(string),service_code(string),is_primary(bool),is_major(bool),resource_type(string),domain_id(string)",
+        "response": "results(CloudServiceTypeInfo),total_count(int32)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceType",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceQuerySet",
+        "verb": "create",
+        "request": "name(string),query_options(AnalyzeQuery),unit(Struct),provider(string),cloud_service_group(string),cloud_service_type(string),tags(Struct),domain_id(string)",
+        "response": "query_set_id(string),name(string),state(State),query_options(AnalyzeQuery),query_type(QueryType),unit(Struct),data_keys(string),additional_info_keys(string),provider(string),cloud_service_group(string),cloud_service_type(string),tags(Struct),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceQuerySet",
+        "verb": "update",
+        "request": "query_set_id(string),name(string),query_options(AnalyzeQuery),unit(Struct),tags(Struct),domain_id(string)",
+        "response": "query_set_id(string),name(string),state(State),query_options(AnalyzeQuery),query_type(QueryType),unit(Struct),data_keys(string),additional_info_keys(string),provider(string),cloud_service_group(string),cloud_service_type(string),tags(Struct),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceQuerySet",
+        "verb": "delete",
+        "request": "query_set_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceQuerySet",
+        "verb": "run",
+        "request": "query_set_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceQuerySet",
+        "verb": "test",
+        "request": "query_set_id(string),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceQuerySet",
+        "verb": "enable",
+        "request": "query_set_id(string),domain_id(string)",
+        "response": "query_set_id(string),name(string),state(State),query_options(AnalyzeQuery),query_type(QueryType),unit(Struct),data_keys(string),additional_info_keys(string),provider(string),cloud_service_group(string),cloud_service_type(string),tags(Struct),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceQuerySet",
+        "verb": "disable",
+        "request": "query_set_id(string),domain_id(string)",
+        "response": "query_set_id(string),name(string),state(State),query_options(AnalyzeQuery),query_type(QueryType),unit(Struct),data_keys(string),additional_info_keys(string),provider(string),cloud_service_group(string),cloud_service_type(string),tags(Struct),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceQuerySet",
+        "verb": "get",
+        "request": "query_set_id(string),domain_id(string),only(string)",
+        "response": "query_set_id(string),name(string),state(State),query_options(AnalyzeQuery),query_type(QueryType),unit(Struct),data_keys(string),additional_info_keys(string),provider(string),cloud_service_group(string),cloud_service_type(string),tags(Struct),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceQuerySet",
+        "verb": "list",
+        "request": "query(Query),query_set_id(string),name(string),state(State),query_type(QueryType),provider(string),cloud_service_group(string),cloud_service_type(string),domain_id(string)",
+        "response": "results(CloudServiceQuerySetInfo),total_count(int32)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceQuerySet",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudService",
+        "verb": "create",
+        "request": "cloud_service_type(string),provider(string),cloud_service_group(string),name(string),account(string),instance_type(string),instance_size(float),ip_addresses(string),data(Struct),metadata(Struct),reference(CloudServiceReference),tags(Struct),region_code(string),project_id(string),domain_id(string)",
+        "response": "cloud_service_id(string),name(string),state(string),account(string),instance_type(string),instance_size(float),cloud_service_type(string),cloud_service_group(string),provider(string),data(Struct),metadata(Struct),reference(CloudServiceReference),tags(Struct),tag_keys(Struct),collection_info(CollectionInfo),ip_addresses(string),region_code(string),project_id(string),domain_id(string),created_at(string),updated_at(string),deleted_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudService",
+        "verb": "update",
+        "request": "cloud_service_id(string),name(string),account(string),instance_type(string),instance_size(float),ip_addresses(string),data(Struct),metadata(Struct),reference(CloudServiceReference),tags(Struct),region_code(string),project_id(string),domain_id(string),release_project(bool),release_region(bool)",
+        "response": "cloud_service_id(string),name(string),state(string),account(string),instance_type(string),instance_size(float),cloud_service_type(string),cloud_service_group(string),provider(string),data(Struct),metadata(Struct),reference(CloudServiceReference),tags(Struct),tag_keys(Struct),collection_info(CollectionInfo),ip_addresses(string),region_code(string),project_id(string),domain_id(string),created_at(string),updated_at(string),deleted_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudService",
+        "verb": "delete",
+        "request": "cloud_service_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudService",
+        "verb": "get",
+        "request": "cloud_service_id(string),domain_id(string),only(string)",
+        "response": "cloud_service_id(string),name(string),state(string),account(string),instance_type(string),instance_size(float),cloud_service_type(string),cloud_service_group(string),provider(string),data(Struct),metadata(Struct),reference(CloudServiceReference),tags(Struct),tag_keys(Struct),collection_info(CollectionInfo),ip_addresses(string),region_code(string),project_id(string),domain_id(string),created_at(string),updated_at(string),deleted_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudService",
+        "verb": "list",
+        "request": "query(Query),cloud_service_id(string),name(string),state(string),account(string),instance_type(string),cloud_service_type(string),cloud_service_group(string),provider(string),region_code(string),ip_address(string),project_id(string),project_group_id(string),domain_id(string)",
+        "response": "results(CloudServiceInfo),total_count(int32)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudService",
+        "verb": "export",
+        "request": "options(ExportOption),file_format(FileFormat),file_name(string),timezone(string),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudService",
+        "verb": "analyze",
+        "request": "query(AnalyzeQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudService",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "ChangeHistory",
+        "verb": "list",
+        "request": "query(Query),cloud_service_id(string),action(RecordAction),user_id(string),collector_id(string),job_id(string),updated_by(string),domain_id(string)",
+        "response": "results(RecordInfo),total_count(int32)"
+    },
+    {
+        "service": "inventory",
+        "resource": "ChangeHistory",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string),cloud_service_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "ResourceGroup",
+        "verb": "create",
+        "request": "name(string),resources(Resource),options(Struct),tags(Struct),project_id(string),domain_id(string)",
+        "response": "resource_group_id(string),name(string),resources(Resource),options(Struct),tags(Struct),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "ResourceGroup",
+        "verb": "update",
+        "request": "resource_group_id(string),name(string),resources(Resource),options(Struct),tags(Struct),release_project(bool),project_id(string),domain_id(string)",
+        "response": "resource_group_id(string),name(string),resources(Resource),options(Struct),tags(Struct),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "ResourceGroup",
+        "verb": "delete",
+        "request": "resource_group_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "inventory",
+        "resource": "ResourceGroup",
+        "verb": "get",
+        "request": "resource_group_id(string),domain_id(string),only(string)",
+        "response": "resource_group_id(string),name(string),resources(Resource),options(Struct),tags(Struct),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "ResourceGroup",
+        "verb": "list",
+        "request": "query(Query),resource_group_id(string),name(string),project_id(string),domain_id(string)",
+        "response": "results(ResourceGroupInfo),total_count(int32)"
+    },
+    {
+        "service": "inventory",
+        "resource": "ResourceGroup",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceStats",
+        "verb": "list",
+        "request": "query(Query),query_set_id(string),provider(string),cloud_service_group(string),cloud_service_type(string),region_code(string),account(string),project_id(string),domain_id(string)",
+        "response": "results(CloudServiceStatInfo),total_count(int32)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceStats",
+        "verb": "analyze",
+        "request": "query(TimeSeriesAnalyzeQuery),query_set_id(string),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceStats",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),query_set_id(string),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "CollectorRule",
+        "verb": "create",
+        "request": "name(string),conditions(CollectorRuleCondition),conditions_policy(ConditionsPolicy),actions(CollectorRuleActions),options(CollectorRuleOptions),tags(Struct),collector_id(string),domain_id(string)",
+        "response": "collector_rule_id(string),name(string),order(int32),conditions(CollectorRuleCondition),conditions_policy(ConditionsPolicy),actions(CollectorRuleActions),options(CollectorRuleOptions),tags(Struct),rule_type(string),collector_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CollectorRule",
+        "verb": "update",
+        "request": "collector_rule_id(string),name(string),conditions(CollectorRuleCondition),conditions_policy(ConditionsPolicy),actions(CollectorRuleActions),options(CollectorRuleOptions),tags(Struct),domain_id(string)",
+        "response": "collector_rule_id(string),name(string),order(int32),conditions(CollectorRuleCondition),conditions_policy(ConditionsPolicy),actions(CollectorRuleActions),options(CollectorRuleOptions),tags(Struct),rule_type(string),collector_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CollectorRule",
+        "verb": "change_order",
+        "request": "collector_rule_id(string),order(int32),domain_id(string)",
+        "response": "collector_rule_id(string),name(string),order(int32),conditions(CollectorRuleCondition),conditions_policy(ConditionsPolicy),actions(CollectorRuleActions),options(CollectorRuleOptions),tags(Struct),rule_type(string),collector_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CollectorRule",
+        "verb": "delete",
+        "request": "collector_rule_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "inventory",
+        "resource": "CollectorRule",
+        "verb": "get",
+        "request": "collector_rule_id(string),domain_id(string),only(string)",
+        "response": "collector_rule_id(string),name(string),order(int32),conditions(CollectorRuleCondition),conditions_policy(ConditionsPolicy),actions(CollectorRuleActions),options(CollectorRuleOptions),tags(Struct),rule_type(string),collector_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CollectorRule",
+        "verb": "list",
+        "request": "query(Query),collector_rule_id(string),name(string),data_source_id(string),domain_id(string)",
+        "response": "results(CollectorRuleInfo),total_count(int32)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CollectorRule",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceReport",
+        "verb": "create",
+        "request": "name(string),options(ExportOption),file_format(FileFormat),schedule(ReportSchedule),target(Struct),timezone(string),language(string),tags(Struct),domain_id(string)",
+        "response": "report_id(string),name(string),options(ExportOption),file_format(FileFormat),schedule(ReportSchedule),target(Struct),tags(Struct),domain_id(string),created_at(string),last_sent_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceReport",
+        "verb": "update",
+        "request": "report_id(string),name(string),options(ExportOption),file_format(FileFormat),schedule(ReportSchedule),target(Struct),timezone(string),language(string),tags(Struct),domain_id(string)",
+        "response": "report_id(string),name(string),options(ExportOption),file_format(FileFormat),schedule(ReportSchedule),target(Struct),tags(Struct),domain_id(string),created_at(string),last_sent_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceReport",
+        "verb": "delete",
+        "request": "report_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceReport",
+        "verb": "send",
+        "request": "report_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceReport",
+        "verb": "get",
+        "request": "report_id(string),domain_id(string),only(string)",
+        "response": "report_id(string),name(string),options(ExportOption),file_format(FileFormat),schedule(ReportSchedule),target(Struct),tags(Struct),domain_id(string),created_at(string),last_sent_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceReport",
+        "verb": "list",
+        "request": "query(Query),report_id(string),name(string),domain_id(string)",
+        "response": "results(CloudServiceReportInfo),total_count(int32)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceReport",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "Note",
+        "verb": "create",
+        "request": "record_id(string),note(string),domain_id(string)",
+        "response": "note_id(string),record_id(string),cloud_service_id(string),note(string),created_by(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "Note",
+        "verb": "update",
+        "request": "note_id(string),note(string),domain_id(string)",
+        "response": "note_id(string),record_id(string),cloud_service_id(string),note(string),created_by(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "Note",
+        "verb": "delete",
+        "request": "note_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "inventory",
+        "resource": "Note",
+        "verb": "get",
+        "request": "note_id(string),domain_id(string),only(string)",
+        "response": "note_id(string),record_id(string),cloud_service_id(string),note(string),created_by(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "Note",
+        "verb": "list",
+        "request": "query(Query),note_id(string),record_id(string),cloud_service_id(string),created_by(string),domain_id(string)",
+        "response": "results(NoteInfo),total_count(int32)"
+    },
+    {
+        "service": "inventory",
+        "resource": "Note",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "JobTask",
+        "verb": "delete",
+        "request": "job_task_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "inventory",
+        "resource": "JobTask",
+        "verb": "get",
+        "request": "job_task_id(string),domain_id(string),only(string)",
+        "response": "job_task_id(string),status(JobTaskStatus),created_count(int32),updated_count(int32),failure_count(int32),deleted_count(int32),disconnected_count(int32),errors(ErrorInfo),job_id(string),secret_id(string),provider(string),service_account_id(string),project_id(string),domain_id(string),created_at(string),started_at(string),finished_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "JobTask",
+        "verb": "list",
+        "request": "query(Query),job_task_id(string),status(JobTaskStatus),job_id(string),secret_id(string),provider(string),service_account_id(string),project_id(string),domain_id(string)",
+        "response": "results(JobTaskInfo),total_count(int32)"
+    },
+    {
+        "service": "inventory",
+        "resource": "JobTask",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "Collector",
+        "verb": "create",
+        "request": "name(string),plugin_info(PluginInfo),schedule(Scheduled),provider(string),tags(Struct),secret_filter(SecretFilter),domain_id(string)",
+        "response": "collector_id(string),name(string),plugin_info(PluginInfo),tags(Struct),provider(string),capability(Struct),schedule(Scheduled),secret_filter(SecretFilter),created_at(string),last_collected_at(string),domain_id(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "Collector",
+        "verb": "update",
+        "request": "collector_id(string),name(string),schedule(Scheduled),secret_filter(SecretFilter),tags(Struct),domain_id(string)",
+        "response": "collector_id(string),name(string),plugin_info(PluginInfo),tags(Struct),provider(string),capability(Struct),schedule(Scheduled),secret_filter(SecretFilter),created_at(string),last_collected_at(string),domain_id(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "Collector",
+        "verb": "update_plugin",
+        "request": "collector_id(string),version(string),options(Struct),domain_id(string),upgrade_mode(UpgradeMode)",
+        "response": "collector_id(string),name(string),plugin_info(PluginInfo),tags(Struct),provider(string),capability(Struct),schedule(Scheduled),secret_filter(SecretFilter),created_at(string),last_collected_at(string),domain_id(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "Collector",
+        "verb": "verify_plugin",
+        "request": "collector_id(string),secret_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "inventory",
+        "resource": "Collector",
+        "verb": "delete",
+        "request": "collector_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "inventory",
+        "resource": "Collector",
+        "verb": "get",
+        "request": "collector_id(string),domain_id(string),only(string)",
+        "response": "collector_id(string),name(string),plugin_info(PluginInfo),tags(Struct),provider(string),capability(Struct),schedule(Scheduled),secret_filter(SecretFilter),created_at(string),last_collected_at(string),domain_id(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "Collector",
+        "verb": "list",
+        "request": "query(Query),collector_id(string),name(string),state(State),priority(int32),plugin_id(string),domain_id(string)",
+        "response": "results(CollectorInfo),total_count(int32)"
+    },
+    {
+        "service": "inventory",
+        "resource": "Collector",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "Collector",
+        "verb": "collect",
+        "request": "collector_id(string),filter(Struct),secret_id(string),collect_mode(string),domain_id(string),use_cache(bool)",
+        "response": "job_id(string),status(Status),total_tasks(int32),remained_tasks(int32),success_tasks(int32),failure_tasks(int32),collector_id(string),secret_id(string),domain_id(string),plugin_id(string),created_at(string),updated_at(string),finished_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "Job",
+        "verb": "delete",
+        "request": "job_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "inventory",
+        "resource": "Job",
+        "verb": "get",
+        "request": "job_id(string),domain_id(string),only(string)",
+        "response": ""
+    },
+    {
+        "service": "inventory",
+        "resource": "Job",
+        "verb": "list",
+        "request": "query(Query),job_id(string),status(JobStatus),collector_id(string),secret_id(string),domain_id(string)",
+        "response": "results(JobInfo),total_count(int32)"
+    },
+    {
+        "service": "inventory",
+        "resource": "Job",
+        "verb": "analyze",
+        "request": "query(AnalyzeQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "Job",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "inventory",
+        "resource": "Region",
+        "verb": "create",
+        "request": "name(string),region_code(string),provider(string),tags(Struct),domain_id(string)",
+        "response": "region_id(string),name(string),region_key(string),region_code(string),provider(string),tags(Struct),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "Region",
+        "verb": "update",
+        "request": "region_id(string),name(string),tags(Struct),domain_id(string)",
+        "response": "region_id(string),name(string),region_key(string),region_code(string),provider(string),tags(Struct),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "Region",
+        "verb": "delete",
+        "request": "region_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "inventory",
+        "resource": "Region",
+        "verb": "get",
+        "request": "region_id(string),domain_id(string),only(string)",
+        "response": "region_id(string),name(string),region_key(string),region_code(string),provider(string),tags(Struct),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "Region",
+        "verb": "list",
+        "request": "query(Query),region_id(string),name(string),region_key(string),region_code(string),provider(string),domain_id(string)",
+        "response": "results(RegionInfo),total_count(int32)"
+    },
+    {
+        "service": "inventory",
+        "resource": "Region",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "sample",
+        "resource": "HelloWorld",
+        "verb": "say_hello",
+        "request": "name(string)",
+        "response": "message(string)"
+    },
+    {
+        "service": "secret",
+        "resource": "TrustedSecret",
+        "verb": "create",
+        "request": "name(string),data(Struct),tags(Struct),schema(string),service_account_id(string),domain_id(string)",
+        "response": "trusted_secret_id(string),name(string),tags(Struct),schema(string),provider(string),service_account_id(string),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "secret",
+        "resource": "TrustedSecret",
+        "verb": "update",
+        "request": "trusted_secret_id(string),name(string),tags(Struct),domain_id(string)",
+        "response": "trusted_secret_id(string),name(string),tags(Struct),schema(string),provider(string),service_account_id(string),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "secret",
+        "resource": "TrustedSecret",
+        "verb": "delete",
+        "request": "trusted_secret_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "secret",
+        "resource": "TrustedSecret",
+        "verb": "update_data",
+        "request": "trusted_secret_id(string),data(Struct),schema(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "secret",
+        "resource": "TrustedSecret",
+        "verb": "get",
+        "request": "trusted_secret_id(string),domain_id(string),only(string)",
+        "response": "trusted_secret_id(string),name(string),tags(Struct),schema(string),provider(string),service_account_id(string),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "secret",
+        "resource": "TrustedSecret",
+        "verb": "list",
+        "request": "query(Query),trusted_secret_id(string),name(string),schema(string),provider(string),service_account_id(string),domain_id(string)",
+        "response": "results(TrustedSecretInfo),total_count(int32)"
+    },
+    {
+        "service": "secret",
+        "resource": "TrustedSecret",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "secret",
+        "resource": "SecretGroup",
+        "verb": "create",
+        "request": "name(string),tags(Struct),domain_id(string)",
+        "response": "secret_group_id(string),name(string),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "secret",
+        "resource": "SecretGroup",
+        "verb": "update",
+        "request": "secret_group_id(string),name(string),tags(Struct),domain_id(string)",
+        "response": "secret_group_id(string),name(string),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "secret",
+        "resource": "SecretGroup",
+        "verb": "add_secret",
+        "request": "secret_group_id(string),secret_id(string),domain_id(string)",
+        "response": "secret_group_info(SecretGroupInfo),secret_info(SecretInfo),domain_id(string)"
+    },
+    {
+        "service": "secret",
+        "resource": "SecretGroup",
+        "verb": "remove_secret",
+        "request": "secret_group_id(string),secret_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "secret",
+        "resource": "SecretGroup",
+        "verb": "delete",
+        "request": "secret_group_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "secret",
+        "resource": "SecretGroup",
+        "verb": "get",
+        "request": "secret_group_id(string),domain_id(string),only(string)",
+        "response": "secret_group_id(string),name(string),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "secret",
+        "resource": "SecretGroup",
+        "verb": "list",
+        "request": "query(Query),secret_group_id(string),name(string),secret_id(string),domain_id(string)",
+        "response": "results(SecretGroupInfo),total_count(int32)"
+    },
+    {
+        "service": "secret",
+        "resource": "SecretGroup",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "secret",
+        "resource": "Secret",
+        "verb": "create",
+        "request": "name(string),data(Struct),secret_type(SecretType),tags(Struct),schema(string),service_account_id(string),project_id(string),trusted_secret_id(string),domain_id(string)",
+        "response": "secret_id(string),name(string),secret_type(SecretType),tags(Struct),schema(string),provider(string),service_account_id(string),project_id(string),trusted_secret_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "secret",
+        "resource": "Secret",
+        "verb": "update",
+        "request": "secret_id(string),name(string),tags(Struct),project_id(string),domain_id(string),release_project(bool)",
+        "response": "secret_id(string),name(string),secret_type(SecretType),tags(Struct),schema(string),provider(string),service_account_id(string),project_id(string),trusted_secret_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "secret",
+        "resource": "Secret",
+        "verb": "delete",
+        "request": "secret_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "secret",
+        "resource": "Secret",
+        "verb": "update_data",
+        "request": "secret_id(string),data(Struct),domain_id(string),schema(string)",
+        "response": "True"
+    },
+    {
+        "service": "secret",
+        "resource": "Secret",
+        "verb": "get_data",
+        "request": "secret_id(string),domain_id(string)",
+        "response": "data(Struct),encrypted(bool),encrypt_options(Struct)"
+    },
+    {
+        "service": "secret",
+        "resource": "Secret",
+        "verb": "get",
+        "request": "secret_id(string),domain_id(string),only(string)",
+        "response": "secret_id(string),name(string),secret_type(SecretType),tags(Struct),schema(string),provider(string),service_account_id(string),project_id(string),trusted_secret_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "secret",
+        "resource": "Secret",
+        "verb": "list",
+        "request": "query(Query),secret_id(string),name(string),secret_type(SecretType),schema(string),provider(string),service_account_id(string),trusted_secret_id(string),domain_id(string)",
+        "response": "results(SecretInfo),total_count(int32)"
+    },
+    {
+        "service": "secret",
+        "resource": "Secret",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Webhook",
+        "verb": "create",
+        "request": "name(string),plugin_info(WebhookPluginInfo),tags(Struct),project_id(string),domain_id(string)",
+        "response": "webhook_id(string),name(string),state(WebhookState),access_key(string),webhook_url(string),capability(Struct),plugin_info(WebhookPluginInfo),tags(Struct),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Webhook",
+        "verb": "update",
+        "request": "webhook_id(string),name(string),tags(Struct),domain_id(string)",
+        "response": "webhook_id(string),name(string),state(WebhookState),access_key(string),webhook_url(string),capability(Struct),plugin_info(WebhookPluginInfo),tags(Struct),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Webhook",
+        "verb": "update_plugin",
+        "request": "webhook_id(string),version(string),options(Struct),upgrade_mode(UpgradeMode),domain_id(string)",
+        "response": "webhook_id(string),name(string),state(WebhookState),access_key(string),webhook_url(string),capability(Struct),plugin_info(WebhookPluginInfo),tags(Struct),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Webhook",
+        "verb": "verify_plugin",
+        "request": "webhook_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Webhook",
+        "verb": "enable",
+        "request": "webhook_id(string),domain_id(string)",
+        "response": "webhook_id(string),name(string),state(WebhookState),access_key(string),webhook_url(string),capability(Struct),plugin_info(WebhookPluginInfo),tags(Struct),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Webhook",
+        "verb": "disable",
+        "request": "webhook_id(string),domain_id(string)",
+        "response": "webhook_id(string),name(string),state(WebhookState),access_key(string),webhook_url(string),capability(Struct),plugin_info(WebhookPluginInfo),tags(Struct),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Webhook",
+        "verb": "delete",
+        "request": "webhook_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Webhook",
+        "verb": "get",
+        "request": "webhook_id(string),domain_id(string),only(string)",
+        "response": "webhook_id(string),name(string),state(WebhookState),access_key(string),webhook_url(string),capability(Struct),plugin_info(WebhookPluginInfo),tags(Struct),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Webhook",
+        "verb": "list",
+        "request": "query(Query),webhook_id(string),name(string),state(WebhookState),access_key(string),webhook_url(string),project_id(string),domain_id(string)",
+        "response": "results(WebhookInfo),total_count(int32)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Webhook",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Log",
+        "verb": "list",
+        "request": "data_source_id(string),resource_id(string),keyword(string),start(string),end(string),sort(Struct),limit(int32),domain_id(string)",
+        "response": "results(ListValue),domain_id(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Alert",
+        "verb": "create",
+        "request": "title(string),description(string),assignee(string),urgency(AlertUrgency),project_id(string),domain_id(string)",
+        "response": "alert_number(int32),alert_id(string),title(string),state(AlertState),status_message(string),description(string),assignee(string),urgency(AlertUrgency),severity(string),rule(string),resource(AlertResource),provider(string),account(string),is_snoozed(bool),snoozed_end_time(string),escalation_step(int32),escalation_ttl(int32),responders(AlertResponder),project_dependencies(string),image_url(string),additional_info(Struct),triggered_by(string),webhook_id(string),escalation_policy_id(string),project_id(string),domain_id(string),created_at(string),updated_at(string),acknowledged_at(string),resolved_at(string),escalated_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Alert",
+        "verb": "update",
+        "request": "alert_id(string),title(string),state(string),status_message(string),description(string),assignee(string),urgency(AlertUrgency),project_id(string),reset_status_message(bool),reset_description(bool),reset_assignee(bool),domain_id(string)",
+        "response": "alert_number(int32),alert_id(string),title(string),state(AlertState),status_message(string),description(string),assignee(string),urgency(AlertUrgency),severity(string),rule(string),resource(AlertResource),provider(string),account(string),is_snoozed(bool),snoozed_end_time(string),escalation_step(int32),escalation_ttl(int32),responders(AlertResponder),project_dependencies(string),image_url(string),additional_info(Struct),triggered_by(string),webhook_id(string),escalation_policy_id(string),project_id(string),domain_id(string),created_at(string),updated_at(string),acknowledged_at(string),resolved_at(string),escalated_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Alert",
+        "verb": "update_state",
+        "request": "alert_id(string),access_key(string),state(string)",
+        "response": "alert_number(int32),alert_id(string),title(string),state(AlertState),status_message(string),description(string),assignee(string),urgency(AlertUrgency),severity(string),rule(string),resource(AlertResource),provider(string),account(string),is_snoozed(bool),snoozed_end_time(string),escalation_step(int32),escalation_ttl(int32),responders(AlertResponder),project_dependencies(string),image_url(string),additional_info(Struct),triggered_by(string),webhook_id(string),escalation_policy_id(string),project_id(string),domain_id(string),created_at(string),updated_at(string),acknowledged_at(string),resolved_at(string),escalated_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Alert",
+        "verb": "merge",
+        "request": "alerts(string),merge_to(string),domain_id(string)",
+        "response": "alert_number(int32),alert_id(string),title(string),state(AlertState),status_message(string),description(string),assignee(string),urgency(AlertUrgency),severity(string),rule(string),resource(AlertResource),provider(string),account(string),is_snoozed(bool),snoozed_end_time(string),escalation_step(int32),escalation_ttl(int32),responders(AlertResponder),project_dependencies(string),image_url(string),additional_info(Struct),triggered_by(string),webhook_id(string),escalation_policy_id(string),project_id(string),domain_id(string),created_at(string),updated_at(string),acknowledged_at(string),resolved_at(string),escalated_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Alert",
+        "verb": "snooze",
+        "request": "alert_id(string),end_time(string),domain_id(string)",
+        "response": "alert_number(int32),alert_id(string),title(string),state(AlertState),status_message(string),description(string),assignee(string),urgency(AlertUrgency),severity(string),rule(string),resource(AlertResource),provider(string),account(string),is_snoozed(bool),snoozed_end_time(string),escalation_step(int32),escalation_ttl(int32),responders(AlertResponder),project_dependencies(string),image_url(string),additional_info(Struct),triggered_by(string),webhook_id(string),escalation_policy_id(string),project_id(string),domain_id(string),created_at(string),updated_at(string),acknowledged_at(string),resolved_at(string),escalated_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Alert",
+        "verb": "add_responder",
+        "request": "alert_id(string),resource_type(string),resource_id(string),domain_id(string)",
+        "response": "alert_number(int32),alert_id(string),title(string),state(AlertState),status_message(string),description(string),assignee(string),urgency(AlertUrgency),severity(string),rule(string),resource(AlertResource),provider(string),account(string),is_snoozed(bool),snoozed_end_time(string),escalation_step(int32),escalation_ttl(int32),responders(AlertResponder),project_dependencies(string),image_url(string),additional_info(Struct),triggered_by(string),webhook_id(string),escalation_policy_id(string),project_id(string),domain_id(string),created_at(string),updated_at(string),acknowledged_at(string),resolved_at(string),escalated_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Alert",
+        "verb": "remove_responder",
+        "request": "alert_id(string),resource_type(string),resource_id(string),domain_id(string)",
+        "response": "alert_number(int32),alert_id(string),title(string),state(AlertState),status_message(string),description(string),assignee(string),urgency(AlertUrgency),severity(string),rule(string),resource(AlertResource),provider(string),account(string),is_snoozed(bool),snoozed_end_time(string),escalation_step(int32),escalation_ttl(int32),responders(AlertResponder),project_dependencies(string),image_url(string),additional_info(Struct),triggered_by(string),webhook_id(string),escalation_policy_id(string),project_id(string),domain_id(string),created_at(string),updated_at(string),acknowledged_at(string),resolved_at(string),escalated_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Alert",
+        "verb": "add_project_dependency",
+        "request": "alert_id(string),project_id(string),domain_id(string)",
+        "response": "alert_number(int32),alert_id(string),title(string),state(AlertState),status_message(string),description(string),assignee(string),urgency(AlertUrgency),severity(string),rule(string),resource(AlertResource),provider(string),account(string),is_snoozed(bool),snoozed_end_time(string),escalation_step(int32),escalation_ttl(int32),responders(AlertResponder),project_dependencies(string),image_url(string),additional_info(Struct),triggered_by(string),webhook_id(string),escalation_policy_id(string),project_id(string),domain_id(string),created_at(string),updated_at(string),acknowledged_at(string),resolved_at(string),escalated_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Alert",
+        "verb": "remove_project_dependency",
+        "request": "alert_id(string),project_id(string),domain_id(string)",
+        "response": "alert_number(int32),alert_id(string),title(string),state(AlertState),status_message(string),description(string),assignee(string),urgency(AlertUrgency),severity(string),rule(string),resource(AlertResource),provider(string),account(string),is_snoozed(bool),snoozed_end_time(string),escalation_step(int32),escalation_ttl(int32),responders(AlertResponder),project_dependencies(string),image_url(string),additional_info(Struct),triggered_by(string),webhook_id(string),escalation_policy_id(string),project_id(string),domain_id(string),created_at(string),updated_at(string),acknowledged_at(string),resolved_at(string),escalated_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Alert",
+        "verb": "delete",
+        "request": "alert_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Alert",
+        "verb": "get",
+        "request": "alert_id(string),domain_id(string),only(string)",
+        "response": "alert_number(int32),alert_id(string),title(string),state(AlertState),status_message(string),description(string),assignee(string),urgency(AlertUrgency),severity(string),rule(string),resource(AlertResource),provider(string),account(string),is_snoozed(bool),snoozed_end_time(string),escalation_step(int32),escalation_ttl(int32),responders(AlertResponder),project_dependencies(string),image_url(string),additional_info(Struct),triggered_by(string),webhook_id(string),escalation_policy_id(string),project_id(string),domain_id(string),created_at(string),updated_at(string),acknowledged_at(string),resolved_at(string),escalated_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Alert",
+        "verb": "list",
+        "request": "query(Query),alert_number(int32),alert_id(string),title(string),state(AlertState),assignee(string),urgency(AlertUrgency),severity(string),is_snoozed(string),resource_id(string),provider(string),account(string),triggered_by(string),webhook_id(string),escalation_policy_id(string),project_id(string),domain_id(string)",
+        "response": "results(AlertInfo),total_count(int32)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Alert",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "monitoring",
+        "resource": "ProjectAlertConfig",
+        "verb": "create",
+        "request": "project_id(string),escalation_policy_id(string),options(AlertOptions),domain_id(string)",
+        "response": "project_id(string),options(AlertOptions),escalation_policy_info(EscalationPolicyInfo),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "ProjectAlertConfig",
+        "verb": "update",
+        "request": "project_id(string),escalation_policy_id(string),options(AlertOptions),domain_id(string)",
+        "response": "project_id(string),options(AlertOptions),escalation_policy_info(EscalationPolicyInfo),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "ProjectAlertConfig",
+        "verb": "delete",
+        "request": "project_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "monitoring",
+        "resource": "ProjectAlertConfig",
+        "verb": "get",
+        "request": "project_id(string),domain_id(string),only(string)",
+        "response": "project_id(string),options(AlertOptions),escalation_policy_info(EscalationPolicyInfo),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "ProjectAlertConfig",
+        "verb": "list",
+        "request": "query(Query),project_id(string),escalation_policy_id(string),domain_id(string)",
+        "response": "results(ProjectAlertConfigInfo),total_count(int32)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "ProjectAlertConfig",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Note",
+        "verb": "create",
+        "request": "alert_id(string),note(string),domain_id(string)",
+        "response": "note_id(string),alert_id(string),note(string),created_by(string),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Note",
+        "verb": "update",
+        "request": "note_id(string),note(string),domain_id(string)",
+        "response": "note_id(string),alert_id(string),note(string),created_by(string),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Note",
+        "verb": "delete",
+        "request": "note_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Note",
+        "verb": "get",
+        "request": "note_id(string),domain_id(string),only(string)",
+        "response": "note_id(string),alert_id(string),note(string),created_by(string),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Note",
+        "verb": "list",
+        "request": "query(Query),note_id(string),alert_id(string),created_by(string),project_id(string),domain_id(string)",
+        "response": "results(NoteInfo),total_count(int32)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Note",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Event",
+        "verb": "create",
+        "request": "webhook_id(string),access_key(string),data(Struct)",
+        "response": "True"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Event",
+        "verb": "get",
+        "request": "event_id(string),domain_id(string),only(string)",
+        "response": "event_id(string),event_key(string),event_type(string),title(string),description(string),severity(string),rule(string),resource(EventResource),provider(string),account(string),image_url(string),raw_data(Struct),additional_info(Struct),alert_id(string),webhook_id(string),project_id(string),domain_id(string),created_at(string),occurred_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Event",
+        "verb": "list",
+        "request": "query(Query),event_id(string),event_key(string),event_type(string),severity(string),resource_id(string),provider(string),account(string),alert_id(string),webhook_id(string),project_id(string),domain_id(string)",
+        "response": "results(EventInfo),total_count(int32)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Event",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Metric",
+        "verb": "list",
+        "request": "data_source_id(string),resources(string),domain_id(string)",
+        "response": "metrics(MetricInfo),available_resources(Struct),domain_id(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Metric",
+        "verb": "get_data",
+        "request": "data_source_id(string),metric_query(Struct),metric(string),start(string),end(string),period(int32),stat(string),domain_id(string)",
+        "response": "labels(ListValue),values(Struct),domain_id(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "DataSource",
+        "verb": "register",
+        "request": "name(string),plugin_info(DataSourcePluginInfo),tags(Struct),domain_id(string)",
+        "response": "data_source_id(string),name(string),state(State),monitoring_type(MonitoringType),provider(string),capability(Struct),plugin_info(DataSourcePluginInfo),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "DataSource",
+        "verb": "update",
+        "request": "data_source_id(string),name(string),tags(Struct),domain_id(string)",
+        "response": "data_source_id(string),name(string),state(State),monitoring_type(MonitoringType),provider(string),capability(Struct),plugin_info(DataSourcePluginInfo),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "DataSource",
+        "verb": "enable",
+        "request": "data_source_id(string),domain_id(string)",
+        "response": "data_source_id(string),name(string),state(State),monitoring_type(MonitoringType),provider(string),capability(Struct),plugin_info(DataSourcePluginInfo),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "DataSource",
+        "verb": "disable",
+        "request": "data_source_id(string),domain_id(string)",
+        "response": "data_source_id(string),name(string),state(State),monitoring_type(MonitoringType),provider(string),capability(Struct),plugin_info(DataSourcePluginInfo),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "DataSource",
+        "verb": "deregister",
+        "request": "data_source_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "monitoring",
+        "resource": "DataSource",
+        "verb": "update_plugin",
+        "request": "data_source_id(string),version(string),options(Struct),upgrade_mode(UpgradeMode),domain_id(string)",
+        "response": "data_source_id(string),name(string),state(State),monitoring_type(MonitoringType),provider(string),capability(Struct),plugin_info(DataSourcePluginInfo),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "DataSource",
+        "verb": "verify_plugin",
+        "request": "data_source_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "monitoring",
+        "resource": "DataSource",
+        "verb": "get",
+        "request": "data_source_id(string),domain_id(string),only(string)",
+        "response": "data_source_id(string),name(string),state(State),monitoring_type(MonitoringType),provider(string),capability(Struct),plugin_info(DataSourcePluginInfo),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "DataSource",
+        "verb": "list",
+        "request": "query(Query),data_source_id(string),name(string),state(string),monitoring_type(MonitoringType),provider(string),domain_id(string)",
+        "response": "results(DataSourceInfo),total_count(int32)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "DataSource",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "monitoring",
+        "resource": "EscalationPolicy",
+        "verb": "create",
+        "request": "name(string),rules(EscalationPolicyRule),repeat_count(int32),finish_condition(EscalationFinishCondition),project_id(string),tags(Struct),domain_id(string)",
+        "response": "escalation_policy_id(string),name(string),is_default(bool),rules(EscalationPolicyRule),repeat_count(int32),finish_condition(EscalationFinishCondition),scope(EscalationPolicyScope),project_id(string),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "EscalationPolicy",
+        "verb": "update",
+        "request": "escalation_policy_id(string),name(string),rules(EscalationPolicyRule),repeat_count(int32),finish_condition(EscalationFinishCondition),tags(Struct),domain_id(string)",
+        "response": "escalation_policy_id(string),name(string),is_default(bool),rules(EscalationPolicyRule),repeat_count(int32),finish_condition(EscalationFinishCondition),scope(EscalationPolicyScope),project_id(string),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "EscalationPolicy",
+        "verb": "set_default",
+        "request": "escalation_policy_id(string),domain_id(string)",
+        "response": "escalation_policy_id(string),name(string),is_default(bool),rules(EscalationPolicyRule),repeat_count(int32),finish_condition(EscalationFinishCondition),scope(EscalationPolicyScope),project_id(string),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "EscalationPolicy",
+        "verb": "delete",
+        "request": "escalation_policy_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "monitoring",
+        "resource": "EscalationPolicy",
+        "verb": "get",
+        "request": "escalation_policy_id(string),domain_id(string),only(string)",
+        "response": "escalation_policy_id(string),name(string),is_default(bool),rules(EscalationPolicyRule),repeat_count(int32),finish_condition(EscalationFinishCondition),scope(EscalationPolicyScope),project_id(string),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "EscalationPolicy",
+        "verb": "list",
+        "request": "query(Query),escalation_policy_id(string),name(string),is_default(bool),finish_condition(EscalationFinishCondition),scope(EscalationPolicyScope),project_id(string),domain_id(string)",
+        "response": "results(EscalationPolicyInfo),total_count(int32)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "EscalationPolicy",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "monitoring",
+        "resource": "MaintenanceWindow",
+        "verb": "create",
+        "request": "title(string),projects(string),start_time(string),end_time(string),tags(Struct),domain_id(string)",
+        "response": "maintenance_window_id(string),title(string),state(MaintenanceWindowState),start_time(string),end_time(string),tags(Struct),projects(string),domain_id(string),created_by(string),created_at(string),updated_at(string),closed_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "MaintenanceWindow",
+        "verb": "update",
+        "request": "maintenance_window_id(string),title(string),projects(string),start_time(string),end_time(string),tags(Struct),domain_id(string)",
+        "response": "maintenance_window_id(string),title(string),state(MaintenanceWindowState),start_time(string),end_time(string),tags(Struct),projects(string),domain_id(string),created_by(string),created_at(string),updated_at(string),closed_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "MaintenanceWindow",
+        "verb": "close",
+        "request": "maintenance_window_id(string),domain_id(string)",
+        "response": "maintenance_window_id(string),title(string),state(MaintenanceWindowState),start_time(string),end_time(string),tags(Struct),projects(string),domain_id(string),created_by(string),created_at(string),updated_at(string),closed_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "MaintenanceWindow",
+        "verb": "get",
+        "request": "maintenance_window_id(string),domain_id(string),only(string)",
+        "response": "maintenance_window_id(string),title(string),state(MaintenanceWindowState),start_time(string),end_time(string),tags(Struct),projects(string),domain_id(string),created_by(string),created_at(string),updated_at(string),closed_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "MaintenanceWindow",
+        "verb": "list",
+        "request": "query(Query),maintenance_window_id(string),title(string),state(MaintenanceWindowState),project_id(string),created_by(string),domain_id(string)",
+        "response": "results(MaintenanceWindowInfo),total_count(int32)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "MaintenanceWindow",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "monitoring",
+        "resource": "EventRule",
+        "verb": "create",
+        "request": "name(string),conditions(EventRuleCondition),conditions_policy(ConditionsPolicy),actions(EventRuleActions),options(EventRuleOptions),project_id(string),tags(Struct),domain_id(string)",
+        "response": "event_rule_id(string),name(string),order(int32),conditions(EventRuleCondition),conditions_policy(ConditionsPolicy),actions(EventRuleActions),options(EventRuleOptions),scope(EventRuleScope),project_id(string),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "EventRule",
+        "verb": "update",
+        "request": "event_rule_id(string),name(string),conditions(EventRuleCondition),conditions_policy(ConditionsPolicy),actions(EventRuleActions),options(EventRuleOptions),tags(Struct),domain_id(string)",
+        "response": "event_rule_id(string),name(string),order(int32),conditions(EventRuleCondition),conditions_policy(ConditionsPolicy),actions(EventRuleActions),options(EventRuleOptions),scope(EventRuleScope),project_id(string),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "EventRule",
+        "verb": "change_order",
+        "request": "event_rule_id(string),order(int32),domain_id(string)",
+        "response": "event_rule_id(string),name(string),order(int32),conditions(EventRuleCondition),conditions_policy(ConditionsPolicy),actions(EventRuleActions),options(EventRuleOptions),scope(EventRuleScope),project_id(string),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "EventRule",
+        "verb": "delete",
+        "request": "event_rule_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "monitoring",
+        "resource": "EventRule",
+        "verb": "get",
+        "request": "event_rule_id(string),domain_id(string),only(string)",
+        "response": "event_rule_id(string),name(string),order(int32),conditions(EventRuleCondition),conditions_policy(ConditionsPolicy),actions(EventRuleActions),options(EventRuleOptions),scope(EventRuleScope),project_id(string),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "EventRule",
+        "verb": "list",
+        "request": "query(Query),event_rule_id(string),name(string),scope(EventRuleScope),project_id(string),domain_id(string)",
+        "response": "results(EventRuleInfo),total_count(int32)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "EventRule",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    }
+]

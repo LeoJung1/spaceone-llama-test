@@ -1,0 +1,282 @@
+[
+    {
+        "service": "identity",
+        "resource": "Domain",
+        "verb": "delete",
+        "request": "domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "notification",
+        "resource": "UserChannel",
+        "verb": "get",
+        "request": "user_channel_id(string),domain_id(string),only(string)",
+        "response": "user_channel_id(string),name(string),state(UserChannelState),data(Struct),secret_id(string),is_subscribe(bool),subscriptions(string),is_scheduled(bool),schedule(UserChannelSchedule),tags(Struct),protocol_id(string),user_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Event",
+        "verb": "list",
+        "request": "query(Query),event_id(string),event_key(string),event_type(string),severity(string),resource_id(string),provider(string),account(string),alert_id(string),webhook_id(string),project_id(string),domain_id(string)",
+        "response": "results(EventInfo),total_count(int32)"
+    },
+    {
+        "service": "identity",
+        "resource": "ServiceAccount",
+        "verb": "get",
+        "request": "service_account_id(string),domain_id(string),only(string)",
+        "response": "service_account_id(string),name(string),service_account_type(string),data(Struct),provider(string),trusted_service_account_id(string),project_info(ProjectInfo),scope(string),domain_id(string),tags(Struct),created_at(string)"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSource",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSource",
+        "verb": "list",
+        "request": "query(Query),data_source_id(string),name(string),state(string),data_source_type(DataSourceType),provider(string),domain_id(string)",
+        "response": "results(DataSourceInfo),total_count(int32)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "EventRule",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSource",
+        "verb": "disable",
+        "request": "data_source_id(string),domain_id(string)",
+        "response": "data_source_id(string),name(string),state(State),data_source_type(DataSourceType),provider(string),plugin_info(PluginInfo),secret_type(SecretType),secret_filter(SecretFilter),template(Struct),tags(Struct),cost_tag_keys(string),cost_additional_info_keys(string),cost_data_keys(string),domain_id(string),created_at(string),last_synchronized_at(string)"
+    },
+    {
+        "service": "board",
+        "resource": "Board",
+        "verb": "update",
+        "request": "board_id(string),name(string),tags(Struct)",
+        "response": "board_id(string),name(string),categories(string),tags(Struct),created_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudServiceQuerySet",
+        "verb": "create",
+        "request": "name(string),query_options(AnalyzeQuery),unit(Struct),provider(string),cloud_service_group(string),cloud_service_type(string),tags(Struct),domain_id(string)",
+        "response": "query_set_id(string),name(string),state(State),query_options(AnalyzeQuery),query_type(QueryType),unit(Struct),data_keys(string),additional_info_keys(string),provider(string),cloud_service_group(string),cloud_service_type(string),tags(Struct),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "identity",
+        "resource": "User",
+        "verb": "verify_email",
+        "request": "user_id(string),email(string),force(bool),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "APIKey",
+        "verb": "delete",
+        "request": "api_key_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Event",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "secret",
+        "resource": "TrustedSecret",
+        "verb": "update_data",
+        "request": "trusted_secret_id(string),data(Struct),schema(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "identity",
+        "resource": "Provider",
+        "verb": "create",
+        "request": "provider(string),name(string),order(int32),template(Struct),metadata(Struct),capability(Struct),tags(Struct),domain_id(string)",
+        "response": "provider(string),name(string),order(int32),template(Struct),metadata(Struct),capability(Struct),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "DataSource",
+        "verb": "enable",
+        "request": "data_source_id(string),domain_id(string)",
+        "response": "data_source_id(string),name(string),state(State),monitoring_type(MonitoringType),provider(string),capability(Struct),plugin_info(DataSourcePluginInfo),tags(Struct),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "inventory",
+        "resource": "Region",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "dashboard",
+        "resource": "DomainDashboard",
+        "verb": "update",
+        "request": "domain_dashboard_id(string),name(string),layouts(ListValue),variables(Struct),settings(Struct),variables_schema(Struct),labels(ListValue),tags(Struct),domain_id(string)",
+        "response": "domain_dashboard_id(string),name(string),viewers(Viewers),version(int32),layouts(ListValue),variables(Struct),settings(Struct),variables_schema(Struct),labels(ListValue),tags(Struct),user_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "secret",
+        "resource": "Secret",
+        "verb": "list",
+        "request": "query(Query),secret_id(string),name(string),secret_type(SecretType),schema(string),provider(string),service_account_id(string),trusted_secret_id(string),domain_id(string)",
+        "response": "results(SecretInfo),total_count(int32)"
+    },
+    {
+        "service": "inventory",
+        "resource": "CloudService",
+        "verb": "export",
+        "request": "options(ExportOption),file_format(FileFormat),file_name(string),timezone(string),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "DataSourceRule",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "ExchangeRate",
+        "verb": "reset",
+        "request": "currency(string),domain_id(string)",
+        "response": "currency(string),rate(float),state(State),is_default(bool),domain_id(string)"
+    },
+    {
+        "service": "dashboard",
+        "resource": "ProjectDashboard",
+        "verb": "delete_version",
+        "request": "project_dashboard_id(string),version(int32),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "statistics",
+        "resource": "History",
+        "verb": "create",
+        "request": "schedule_id(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "monitoring",
+        "resource": "ProjectAlertConfig",
+        "verb": "update",
+        "request": "project_id(string),escalation_policy_id(string),options(AlertOptions),domain_id(string)",
+        "response": "project_id(string),options(AlertOptions),escalation_policy_info(EscalationPolicyInfo),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "ProjectAlertConfig",
+        "verb": "update",
+        "request": "project_id(string),escalation_policy_id(string),options(AlertOptions),domain_id(string)",
+        "response": "project_id(string),options(AlertOptions),escalation_policy_info(EscalationPolicyInfo),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "notification",
+        "resource": "Protocol",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "repository",
+        "resource": "Plugin",
+        "verb": "disable",
+        "request": "plugin_id(string),domain_id(string)",
+        "response": "plugin_id(string),name(string),image(string),registry_url(string),state(State),service_type(string),provider(string),registry_type(PublicRegistryType),registry_config(Struct),capability(Struct),template(Struct),labels(ListValue),tags(Struct),repository_info(RepositoryInfo),project_id(string),domain_id(string),created_at(string),updated_at(string)"
+    },
+    {
+        "service": "secret",
+        "resource": "Secret",
+        "verb": "update",
+        "request": "secret_id(string),name(string),tags(Struct),project_id(string),domain_id(string),release_project(bool)",
+        "response": "secret_id(string),name(string),secret_type(SecretType),tags(Struct),schema(string),provider(string),service_account_id(string),project_id(string),trusted_secret_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "repository",
+        "resource": "Policy",
+        "verb": "list",
+        "request": "query(Query),policy_id(string),name(string),project_id(string),repository_id(string),domain_id(string),state(State)",
+        "response": "results(PolicyInfo),total_count(int32)"
+    },
+    {
+        "service": "statistics",
+        "resource": "Storage",
+        "verb": "list",
+        "request": "query(Query),storage_id(string),name(string),state(string),user_id(string),domain_id(string)",
+        "response": "results(StorageInfo),total_count(int32)"
+    },
+    {
+        "service": "monitoring",
+        "resource": "EscalationPolicy",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Event",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "statistics",
+        "resource": "Storage",
+        "verb": "update_plugin",
+        "request": "storage_id(string),version(string),options(Struct),secret_data(Struct),domain_id(string)",
+        "response": "storage_id(string),name(string),state(State),options(Struct),capability(Struct),plugin_info(PluginInfo),tags(Struct),user_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "config",
+        "resource": "UserConfig",
+        "verb": "delete",
+        "request": "name(string),domain_id(string)",
+        "response": "True"
+    },
+    {
+        "service": "config",
+        "resource": "UserConfig",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "monitoring",
+        "resource": "Webhook",
+        "verb": "create",
+        "request": "name(string),plugin_info(WebhookPluginInfo),tags(Struct),project_id(string),domain_id(string)",
+        "response": "webhook_id(string),name(string),state(WebhookState),access_key(string),webhook_url(string),capability(Struct),plugin_info(WebhookPluginInfo),tags(Struct),project_id(string),domain_id(string),created_at(string)"
+    },
+    {
+        "service": "statistics",
+        "resource": "History",
+        "verb": "stat",
+        "request": "query(StatisticsQuery),topic(string),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "Cost",
+        "verb": "analyze",
+        "request": "query(TimeSeriesAnalyzeQuery),data_source_id(string),domain_id(string)",
+        "response": "Struct"
+    },
+    {
+        "service": "cost_analysis",
+        "resource": "CostQuerySet",
+        "verb": "create",
+        "request": "data_source_id(string),name(string),options(Struct),tags(Struct),domain_id(string)",
+        "response": "cost_query_set_id(string),name(string),options(Struct),tags(Struct),user_id(string),data_source_id(string),domain_id(string),created_at(string),updated_at(string)"
+    }
+]
