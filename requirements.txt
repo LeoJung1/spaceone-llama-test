@@ -1,6 +1,6 @@
 datasets
 sentencepiece
-transformers @ git+https://github.com/huggingface/transformers.git@main
+transformers @ git+https://github.com/huggingface/transformers.git@main bitsandbytes
 peft @ git+https://github.com/huggingface/peft.git@4c611f4
 torch
 wandb
