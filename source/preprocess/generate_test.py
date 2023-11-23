@@ -62,9 +62,9 @@ def read_micro_service(service_name, version="v1"):
         r = parse_json_file(os.path.join(API_PATH, service_name, version, f))
         for k, v in r.items():
             for verb in v:
-                q = f"spacectl exec {verb[0]} {service_name}.{k}"
+                c = f"spacectl exec {verb[0]} {service_name}.{k}"
                 r = {
-                    'command' : q,
+                    'command' : c,
                     'service': service_name, 
                     'resource': k, 
                     'verb': verb[0], 

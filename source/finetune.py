@@ -2,6 +2,7 @@ import os
 import sys
 import torch
 
+from datasets import load_dataset
 from datetime import datetime
 from peft import (
     LoraConfig,
@@ -10,13 +11,16 @@ from peft import (
     prepare_model_for_int8_training,
     set_peft_model_state_dict,
 )
-from transformers import (AutoTokenizer, 
-                          AutoModelForCausalLM, 
-                          TrainingArguments, 
-                          Trainer, 
-                          DataCollatorForSeq2Seq
+from transformers import (
+    AutoTokenizer, 
+    AutoModelForCausalLM, 
+    TrainingArguments, 
+    Trainer, 
+    DataCollatorForSeq2Seq
 )
 
+train_dataset = load_dataset("json", data_files="cloudforet_api_train_v2.json", split="train")
+eval_dataset = load_dataset("json", data_files="cloudforet_api_test_v2.json", split="train")
 base_model = "codellama/CodeLlama-7b-hf"
 model = AutoModelForCausalLM.from_pretrained(
     base_model,
@@ -69,6 +73,9 @@ def generate_and_tokenize_prompt(data_point):
 
                 You must learn the inter-relation of these Service, Resource, Verb, Request and Response.
 
+                ### Command:
+                {data_point["command"]}
+
                 ### Service:
                 {data_point["service"]}
 
@@ -89,6 +96,7 @@ def generate_and_tokenize_prompt(data_point):
 tokenized_train_dataset = train_dataset.map(generate_and_tokenize_prompt)
 tokenized_val_dataset = eval_dataset.map(generate_and_tokenize_prompt)
 
+print("Putting model into the training mode...")
 model.train() # put model back into training mode
 model = prepare_model_for_int8_training(model)
 
@@ -127,13 +135,14 @@ training_args = TrainingArguments(
         per_device_train_batch_size=per_device_train_batch_size,
         gradient_accumulation_steps=gradient_accumulation_steps,
         warmup_steps=10,
-        max_steps=100,
+        max_steps=200,
         learning_rate=3e-4,
         fp16=True,
         logging_steps=10,
         optim="adamw_torch",
         evaluation_strategy="steps", # if val_set_size > 0 else "no",
         save_strategy="steps",
+        save_safetensors=False,
         eval_steps=20,
         save_steps=20,
         output_dir=output_dir,

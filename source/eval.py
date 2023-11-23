@@ -15,9 +15,8 @@ output_dir = "sql-code-llama"
 tokenizer = AutoTokenizer.from_pretrained("codellama/CodeLlama-7b-hf")
 model = PeftModel.from_pretrained(model, output_dir)
 
-eval_prompt = """You are a powerful cloudforet API model. Your job is to understand the struct of Cloudforet API. Your are given a Service, Resource, Verb, Request and Response. Service is a standalone micro service consist of Resources. By execuing specific verbs with request on the Resource, the output is as the format of the Response.
-
-                You must learn the inter-relation of these Service, Resource, Verb, Request and Response.
+eval_prompt = """You are a powerful cloudforet API model. Your job is to understand the struct of Cloudforet API.
+Given the question, give me the response as the command that will be used for the CLI.
 
 ### Question : Show me all the resources in the inventory service
 
