@@ -19,8 +19,8 @@ from transformers import (
     DataCollatorForSeq2Seq
 )
 
-train_dataset = load_dataset("json", data_files="cloudforet_api_train_v2.json", split="train")
-eval_dataset = load_dataset("json", data_files="cloudforet_api_test_v2.json", split="train")
+train_dataset = load_dataset("json", data_files="seed_task_data.jsonl", split="train")
+eval_dataset = load_dataset("json", data_files="seed_task_test.jsonl", split="train")
 base_model = "codellama/CodeLlama-7b-hf"
 model = AutoModelForCausalLM.from_pretrained(
     base_model,
@@ -30,9 +30,11 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 tokenizer = AutoTokenizer.from_pretrained(base_model)
 
-eval_prompt = """You are a powerful text-to-SQL model. Your job is to answer questions about a database. You are given a question and context regarding one or more tables.
+eval_prompt = """These are some seed_tasks given related to the SpaceOne structure. It is given an id, the task name, its instruction, and the instances of input and output
+                corresponding to the instruction. If the input is empty, consider the instruction as the input. 
 
 You must output the SQL query that answers the question.
+
 ### Input:
 Which Class has a Frequency MHz larger than 91.5, and a City of license of hyannis, nebraska?
 
@@ -69,27 +71,23 @@ def tokenize(prompt):
     return result
 
 def generate_and_tokenize_prompt(data_point):
-    full_prompt =f"""You are a powerful cloudforet API model. Your job is to understand the struct of Cloudforet API. Your are given a Service, Resource, Verb, Request and Response. Service is a standalone micro service consist of Resources. By execuing specific verbs with request on the Resource, the output is as the format of the Response.
+    full_prompt = f"""These are some seed_tasks given related to the SpaceOne structure. It is given an id, the task name, its instruction, and the instances of input and output
+                corresponding to the instruction. If the input is empty, consider the instruction as the input. 
 
-                You must learn the inter-relation of these Service, Resource, Verb, Request and Response.
+                ### Seed Task Number:
+                {data_point["id"]}
 
-                ### Command:
-                {data_point["command"]}
+                ### Task Name:
+                {data_point["name"]}
 
-                ### Service:
-                {data_point["service"]}
+                ### Instruction:
+                {data_point["instruction"]}
 
-                ### Resource:
-                {data_point["resource"]}
+                ### Input:
+                {data_point["instances"][0]["input"]}
 
-                ### Verb:
-                {data_point["verb"]}
-
-                ### Request:
-                {data_point["request"]}
-
-                ## Response:
-                {data_point["response"]}
+                ### Output:
+                {data_point["instances"][0]["output"]}
                 """
     return tokenize(full_prompt)
 
@@ -131,11 +129,13 @@ per_device_train_batch_size = 32
 gradient_accumulation_steps = batch_size // per_device_train_batch_size
 output_dir = "sql-code-llama"
 
+
+# Always keep the save steps sufficiently less than the max_steps!!
 training_args = TrainingArguments(
         per_device_train_batch_size=per_device_train_batch_size,
         gradient_accumulation_steps=gradient_accumulation_steps,
         warmup_steps=10,
-        max_steps=200,
+        max_steps=50,
         learning_rate=3e-4,
         fp16=True,
         logging_steps=10,
@@ -144,7 +144,7 @@ training_args = TrainingArguments(
         save_strategy="steps",
         save_safetensors=False,
         eval_steps=20,
-        save_steps=20,
+        save_steps=10,
         output_dir=output_dir,
         # save_total_limit=3,
         load_best_model_at_end=False,
