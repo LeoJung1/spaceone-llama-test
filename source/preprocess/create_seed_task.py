@@ -63,10 +63,14 @@ def read_micro_service(service_name, version="v1"):
     ms_structure = defaultdict(dict)
     proto_path = os.path.join(API_PATH, service_name, version)
     json_files = list_json_file(proto_path)
+    exclude = set(["identity.Authorization.verify", "inventory.Job.get", "identity.Domain.get_public_key", "cost_analysis.DataSource.sync"])
     for f in json_files:
         r = parse_json_file(os.path.join(API_PATH, service_name, version, f))
         for k, v in r.items():
             for verb in v:
+                current = f"{service_name}.{k}.{verb[0]}"
+                if current in exclude:
+                    continue
                 ms_structure[f"{service_name}.{k}"][verb[0]] = {"request" : verb[1], "response" : verb[2]}
     return ms_structure
                 
@@ -75,21 +79,21 @@ def extract_microservice(spaceone_structure):
     Extract the microservices
     """
 
-    return list(spaceone_structure.keys())
+    return spaceone_structure.keys()
 
 def extract_resources(spaceone_structure, microservice : str):
     """
     Extract the Resources
     """
 
-    return list(spaceone_structure[microservice].keys())
+    return spaceone_structure[microservice].keys()
 
 def extract_verbs(spaceone_structure, microservice : str, resource : str):
     """
     Extract the possible verbs for the resource
     """
 
-    return list(spaceone_structure[microservice][resource].keys())
+    return spaceone_structure[microservice][resource].keys()
 
 def extract_verb_request_response(spaceone_structure, microservice : str, resource : str, verb : str):
     """
@@ -101,12 +105,18 @@ def extract_verb_request_response(spaceone_structure, microservice : str, resour
     return required_param, response_param
 
 def microservice_instruct():
+    """
+    Instructions for the Microservice
+    """
     instruction_1 = "What microservices exist in the SpaceOne?"
     instruction_2 = "Give me all the microservices in SpaceOne"
     instruction_3 = "What specific microservicse form part of SpaceOne's architecture?"
     return {"inst_1" : instruction_1, "inst_2" : instruction_2, "inst_3" : instruction_3}
 
 def resource_instruct(microservice):
+    """
+    Instructions for the Resource
+    """
     instruction_1 = f"What resources are in {microservice} microservice?"
     instruction_2 = f"List all the resources that are existing in the inputted microservice"
     instruction_3 = f"In the {microservice} microservice, what resources are there?"
@@ -115,6 +125,9 @@ def resource_instruct(microservice):
     return {"inst_1" : instruction_1, "inst_2" : instruction_2, "inst_3" : instruction_3, "inst_4" : instruction_4, "inst_5" : instruction_5}
 
 def verb_instruct(resource):
+    """
+    Instructions for the Verbs
+    """
     instruction_1 = f"What are the executable verbs existing in the {resource} resource?"
     instruction_2 = f"I want to know the possible executable verbs of the following resource"
     instruction_3 = f"What verbs can I use for the {resource} resource?"
@@ -124,12 +137,17 @@ def verb_instruct(resource):
 
 
 def parameter_instruct(resource, verb):
+    """
+    Instructions for the parameters
+    """
+    #Instruction that require input : Inst_2, Inst_5
     instruction_1 = f"""Show me the parameters required to execute "{verb}" in {resource} resource"""
     instruction_2 = f"""What parameters are needed to execute the following verb in the resource?"""
     instruction_3 = f"""I want to execute "{verb}" in the {resource} resource. What are the required parameters?"""
     instruction_4 = f"""What schemas do I need to execute the "{verb}" verb for the {resource} resource?"""
     instruction_5 = f"""List out the required parameters need for the execution of the following verb in the resource"""
 
+    # Instruction that require input : Inst_7, Inst_10
     instruction_6 = f"""Show me the resulting parameters when I execute "{verb}" in the {resource} resource"""
     instruction_7 = f"""What do I get when I execute the following verb in the resource?"""
     instruction_8 = f"""What is the response that I get when I execute "{verb}" in {resource} resource?"""
@@ -144,6 +162,8 @@ def main():
     directories = list_directories(API_PATH)
     for directory in directories:
         spaceone_structure[directory] = read_micro_service(directory)
+    # print(spaceone_structure["identity"]["identity.Authorization"])
+
     
     seed_count = 0
     result = []
@@ -153,7 +173,7 @@ def main():
             "id" : f"seed_task_{seed_count}",
             "name" : "search_microservice",
             "instruction" : microservice_instructions[instruction],
-            "instances" : [{"input" : "", "output" : ", ".join(extract_microservice(spaceone_structure))}]
+            "instances" : [{"input" : "<No Input>", "output" : ", ".join(extract_microservice(spaceone_structure))}]
             }
         result.append(line)
         seed_count += 1
@@ -168,7 +188,7 @@ def main():
                 if instruction == "inst_2" or instruction == "inst_5":
                     res_instances = [{"input" : microservice, "output": output}]
                 else:
-                    res_instances = [{"input" : "", "output":output}]
+                    res_instances = [{"input" : "<No Input>", "output":output}]
                 resource_line = {
                     "id" : f"seed_task_{seed_count}",
                     "name" : f"search_resource",
@@ -181,13 +201,15 @@ def main():
             for verb in spaceone_structure[microservice][resource]:
                 verb_instruction = verb_instruct(resource)
                 parameter_instruction = parameter_instruct(resource, verb)
-                verb_output = extract_verbs(spaceone_structure, microservice, resource)
+                verb_output = ",".join(extract_verbs(spaceone_structure, microservice, resource))
                 parameter_request, parameter_response = extract_verb_request_response(spaceone_structure, microservice, resource, verb)
+                parameter_request = ", ".join(parameter_request)
+                parameter_response = ", ".join(parameter_response)
                 for instruction in verb_instruction:
                     if instruction == "inst_2" or instruction == "inst_5":
                         v_instances = [{"input" : resource, "output": verb_output}]
                     else:
-                        v_instances = [{"input":"", "output": verb_output}]
+                        v_instances = [{"input": "<No Input>", "output": verb_output}]
                     verb_line = {
                         "id" : f"seed_task_{seed_count}",
                         "name" : f"search_verb",
@@ -200,11 +222,11 @@ def main():
                     if instruction == "inst_2" or instruction == "inst_5":
                         par_instances = [{"input" : f"Resource : {resource}, Verb : {verb}", "output": parameter_request}]
                     elif instruction in ["inst_1", "inst_3", "inst_4"]:
-                        par_instances = [{"input" : "", "output" : parameter_request}]
+                        par_instances = [{"input" : "<No Input>", "output" : parameter_request}]
                     elif instruction == "inst_6" or instruction == "inst_10":
                         par_instances = [{"input" : f"Resource : {resource}, Verb : {verb}", "output" : parameter_response}]
                     else:
-                        par_instances = [{"input" : "", "output": parameter_response}]
+                        par_instances = [{"input" : "<No Input>", "output": parameter_response}]
                     param_line = {
                         "id" : f"seed_task_{seed_count}",
                         "name" : f"search_parameters",
@@ -227,7 +249,7 @@ def main():
             selected_items.append(selected_item)
 
     with open(seed_task_test_file, "w") as f:
-        json.dump(selected_items, f, indent=4)
+        json.dump(selected_items, f)
         
 
 if __name__ == "__main__":
