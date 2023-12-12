@@ -71,26 +71,20 @@ def tokenize(prompt):
     return result
 
 def generate_and_tokenize_prompt(data_point):
-    full_prompt = f"""<s>
-    [INST]
-    <<SYS>>
-    You are a helpful SpaceOne Assistant. Your job is to answer questions that the user asks about SpaceOne. Try to answer in a SpaceOne manner as best as possible.
-    If a question doesn't make sense, don't answer ambiguously but you can ask again for more details.
-    <<SYS>>
-                ### Task Name:
-                {data_point["name"]}
+    full_prompt = f"""<<SYS>>
+You are a helpful SpaceOne Assistant. Your job is to answer questions that the user asks about SpaceOne. Try to answer in a SpaceOne manner as best as possible.
+If a question doesn't make sense, don't answer ambiguously but you can ask again for more details.
+<</SYS>>
 
-                ### Instruction:
-                {data_point["instruction"]}
+### Task Name: {data_point["task name"]}
 
-                ### Input:
-                {data_point["instances"][0]["input"]} 
-    [/INST]
+[INST]
+### Instruction: {data_point["instruction"]}
+### Input: {data_point["instances"][0]["input"]} 
+[/INST]
 
-                ### Output:
-                {data_point["instances"][0]["output"]}
-    </s>
-                """
+### Output: {data_point["instances"][0]["output"]}
+"""
     return tokenize(full_prompt)
 
 tokenized_train_dataset = train_dataset.map(generate_and_tokenize_prompt)

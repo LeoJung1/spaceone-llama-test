@@ -64,7 +64,7 @@ def main():
                     json_result.append(param_line)
                     
                         
-                
+    json_result = json_result * 7
     with open(output_file, "w") as f:
         random.shuffle(json_result)
         json.dump(json_result, f, indent=4)

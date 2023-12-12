@@ -15,12 +15,19 @@ output_dir = "sql-code-llama"
 tokenizer = AutoTokenizer.from_pretrained("codellama/CodeLlama-7b-hf")
 model = PeftModel.from_pretrained(model, output_dir)
 
-eval_prompt = """You are a powerful cloudforet API model. Your job is to understand the struct of Cloudforet API.
-Given the question, give me the response as the command that will be used for the CLI.
+eval_prompt = f"""<<SYS>>
+You are a helpful SpaceOne Assistant. Your job is to answer questions that the user asks about SpaceOne. Try to answer in a SpaceOne manner as best as possible.
+If a question doesn't make sense, don't answer ambiguously but you can ask again for more details.
+<</SYS>>
 
-### Question : Show me all the resources in the inventory service
+### Task Name: search_resources
 
-### Response:
+[INST]
+### Instruction: List all the existing resources in the SpaceOne <Identity> microservice.
+### Input: <No Input>
+[/INST]
+
+### Output: 
 """
 
 model_input = tokenizer(eval_prompt, return_tensors="pt").to("cuda")
