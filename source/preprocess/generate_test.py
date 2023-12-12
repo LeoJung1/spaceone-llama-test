@@ -88,7 +88,6 @@ def main(result_file="cloudforet_api_train_v2.json", test_file="cloudforet_api_t
 
     with open(test_file, "w") as f:
         json.dump(selected_items, f, indent=4)
-
 if __name__ == "__main__":
     main()
 

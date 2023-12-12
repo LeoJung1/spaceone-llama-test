@@ -71,12 +71,12 @@ def tokenize(prompt):
     return result
 
 def generate_and_tokenize_prompt(data_point):
-    full_prompt = f"""These are some seed_tasks given related to the SpaceOne structure. It is given an id, the task name, its instruction, and the instances of input and output
-                corresponding to the instruction. If the input is empty, consider the instruction as the input. 
-
-                ### Seed Task Number:
-                {data_point["id"]}
-
+    full_prompt = f"""<s>
+    [INST]
+    <<SYS>>
+    You are a helpful SpaceOne Assistant. Your job is to answer questions that the user asks about SpaceOne. Try to answer in a SpaceOne manner as best as possible.
+    If a question doesn't make sense, don't answer ambiguously but you can ask again for more details.
+    <<SYS>>
                 ### Task Name:
                 {data_point["name"]}
 
@@ -84,10 +84,12 @@ def generate_and_tokenize_prompt(data_point):
                 {data_point["instruction"]}
 
                 ### Input:
-                {data_point["instances"][0]["input"]}
+                {data_point["instances"][0]["input"]} 
+    [/INST]
 
                 ### Output:
                 {data_point["instances"][0]["output"]}
+    </s>
                 """
     return tokenize(full_prompt)
 
@@ -136,7 +138,7 @@ training_args = TrainingArguments(
         gradient_accumulation_steps=gradient_accumulation_steps,
         warmup_steps=10,
         max_steps=50,
-        learning_rate=3e-4,
+        learning_rate=2e-5,
         fp16=True,
         logging_steps=10,
         optim="adamw_torch",
